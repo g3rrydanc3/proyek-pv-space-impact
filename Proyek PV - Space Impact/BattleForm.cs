@@ -16,13 +16,14 @@ namespace Proyek_PV___Space_Impact
         {
             InitializeComponent();
 
+            //flick reduction (?)
             SetStyle(ControlStyles.UserPaint, true);
             SetStyle(ControlStyles.AllPaintingInWmPaint, true);
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
         }
 
-        
         Random rand = new Random();
+        int waktu, level;
 
         int x;
         int y;
@@ -40,7 +41,6 @@ namespace Proyek_PV___Space_Impact
         int[] xMusuh;
         int[] yMusuh;
         int[] jenis;
-        int waktu = 0;
 
         private void Form6_Load(object sender, EventArgs e)
         {
@@ -50,18 +50,21 @@ namespace Proyek_PV___Space_Impact
             imgMusuh2 = Image.FromFile("musuh2.png");
             this.BackgroundImage = Image.FromFile("backgroundgame.jpg");
 
+            waktu = 1;
+            level = 1;
             x = 0;
             y = this.Height / 2 - 50;
             xMusuh = new int[5];
             yMusuh = new int[5];
             jenis = new int[5];
+            //random musuh
             for (int i = 0; i < 5; i++)
             {
                 jenis[i] = rand.Next(0, 2);
                 xMusuh[i] = rand.Next(800, 850);
                 yMusuh[i] = rand.Next(40, 425);
             }
-
+            //random wall
             for (int i = 0; i < 30; i++)
             {
                 wallX.Add(i*60);
@@ -75,13 +78,16 @@ namespace Proyek_PV___Space_Impact
             Graphics g = e.Graphics;
             Brush b = new SolidBrush(Color.Green);
 
+            //gambar wall
             for (int i = 0; i < wallHeight.Count(); i++)
             {
                 g.FillRectangle(b, wallX[i], 540 - wallHeight[i], 50, wallHeight[i]);
             }
 
+            //gambar player
             g.DrawImage(imgPlayer, x, y, 80, 80);
 
+            //gambar bullet
             for (int i = 0; i < bulletArrX.Count(); i++)
             {
                 if (bulletArr[i] == true)
@@ -90,6 +96,7 @@ namespace Proyek_PV___Space_Impact
                 }
             }
 
+            //gambar musuh
             for (int i = 0; i < 5; i++)
             {
                 if (jenis[i] == 0)
@@ -105,6 +112,7 @@ namespace Proyek_PV___Space_Impact
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            //gerak bullet
             for (int i = 0; i < bulletArrX.Count(); i++)
             {
                 if (bulletArr[i] == true)
@@ -167,33 +175,25 @@ namespace Proyek_PV___Space_Impact
 
         private void timer2_Tick(object sender, EventArgs e)
         {
-            int hitungWaktu = int.Parse(label3.Text);
-            hitungWaktu += 1;
-            label3.Text = hitungWaktu.ToString();
-            waktu++;
-            if (label5.Text == "1")
+            if (level == 1)
             {
-                if (waktu == 30)
+                if (waktu == 10)
                 {
-                    label3.Text = "0";
-                    label5.Text = "2";
-                    t1Gerak.Enabled = false;
-                    t2Waktu.Enabled = false;
+                    waktu = 1;
+                    level = 2;
                     MessageBox.Show("Next Level");
-                    t1Gerak.Enabled = true;
-                    t2Waktu.Enabled = true;
                 }
             }
-            if (label5.Text == "2")
+            else if (level == 2)
             {
-
                 if (waktu == 50)
                 {
-                    label3.Text = "0";
+                    label3.Text = "1";
                     label5.Text = "3";
                 }
             }
-            //this.Invalidate();
+            waktu++;
+            label3.Text = waktu.ToString();
         }
 
         private void BattleForm_KeyDown(object sender, KeyEventArgs e)
@@ -232,7 +232,6 @@ namespace Proyek_PV___Space_Impact
                 bulletArrY.Add(y + 30);
                 bulletArr.Add(true);
             }
-            //this.Invalidate();
         }
     }
 }
