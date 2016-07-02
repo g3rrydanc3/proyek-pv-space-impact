@@ -198,6 +198,7 @@ namespace Proyek_PV___Space_Impact
 
         private void BattleForm_KeyDown(object sender, KeyEventArgs e)
         {
+            //gerak
             if (e.KeyCode == Keys.Up)
             {
                 if (y > 30)
