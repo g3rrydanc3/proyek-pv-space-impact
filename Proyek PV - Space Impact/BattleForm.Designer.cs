@@ -140,6 +140,7 @@
             // t1Gerak
             // 
             this.t1Gerak.Enabled = true;
+            this.t1Gerak.Interval = 50;
             this.t1Gerak.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // t2Waktu

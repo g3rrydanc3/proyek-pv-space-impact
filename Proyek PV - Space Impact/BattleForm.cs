@@ -38,36 +38,33 @@ namespace Proyek_PV___Space_Impact
         List<int> wallX = new List<int>();
         List<int> wallHeight = new List<int>();
 
-        int[] xMusuh;
-        int[] yMusuh;
-        int[] jenis;
-
+        List<int> xMusuh = new List<int>();
+        List<int> yMusuh = new List<int>();
+        List<int> jenis = new List<int>();
         private void Form6_Load(object sender, EventArgs e)
-        {
+        {            
             imgPlayer = Image.FromFile("pesawat1.png");
             imgBullet = Image.FromFile("peluru.png");
             imgMusuh1 = Image.FromFile("musuh1.png");
             imgMusuh2 = Image.FromFile("musuh2.png");
             this.BackgroundImage = Image.FromFile("backgroundgame.jpg");
 
-            waktu = 1;
+            waktu = 15;
             level = 1;
+            label3.Text = waktu.ToString();
             x = 0;
             y = this.Height / 2 - 50;
-            xMusuh = new int[5];
-            yMusuh = new int[5];
-            jenis = new int[5];
-            //random musuh
+            ///////////////////random musuh
             for (int i = 0; i < 5; i++)
             {
-                jenis[i] = rand.Next(0, 2);
-                xMusuh[i] = rand.Next(800, 850);
-                yMusuh[i] = rand.Next(40, 425);
+                jenis.Add(rand.Next(0, 2));
+                xMusuh.Add(rand.Next(800, 850));
+                yMusuh.Add(rand.Next(40, 425));
             }
-            //random wall
+            ///////////////////random wall
             for (int i = 0; i < 30; i++)
             {
-                wallX.Add(i*60);
+                wallX.Add(i*200);
                 wallHeight.Add(rand.Next(10,300));
             }
 
@@ -78,16 +75,16 @@ namespace Proyek_PV___Space_Impact
             Graphics g = e.Graphics;
             Brush b = new SolidBrush(Color.Green);
 
-            //gambar wall
+            ///////////////////gambar wall
             for (int i = 0; i < wallHeight.Count(); i++)
             {
                 g.FillRectangle(b, wallX[i], 540 - wallHeight[i], 50, wallHeight[i]);
             }
 
-            //gambar player
+            ///////////////////gambar player
             g.DrawImage(imgPlayer, x, y, 80, 80);
 
-            //gambar bullet
+            ///////////////////gambar bullet
             for (int i = 0; i < bulletArrX.Count(); i++)
             {
                 if (bulletArr[i] == true)
@@ -96,8 +93,8 @@ namespace Proyek_PV___Space_Impact
                 }
             }
 
-            //gambar musuh
-            for (int i = 0; i < 5; i++)
+            ///////////////////gambar musuh
+            for (int i = 0; i < xMusuh.Count(); i++)
             {
                 if (jenis[i] == 0)
                 {
@@ -105,14 +102,14 @@ namespace Proyek_PV___Space_Impact
                 }
                 else if (jenis[i] == 1)
                 {
-                    g.DrawImage(imgMusuh1, xMusuh[i], yMusuh[i], 40, 40);
+                    g.DrawImage(imgMusuh2, xMusuh[i], yMusuh[i], 40, 40);
                 }
             }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            //gerak bullet
+            ///////////////////gerak bullet
             for (int i = 0; i < bulletArrX.Count(); i++)
             {
                 if (bulletArr[i] == true)
@@ -120,20 +117,19 @@ namespace Proyek_PV___Space_Impact
                     bulletArrX[i] += 40;
                 }
             }
-
-            for (int i = 0; i < 5; i++)
+            ///////////////////loop musuh
+            for (int i = 0; i < xMusuh.Count(); i++)
             {
-                //xMusuh[i] -= 10;
-                if (xMusuh[i] == 0)
+                if (xMusuh[i] <= 0)
                 {
                     yMusuh[i] = rand.Next(40, 440);
                     xMusuh[i] = rand.Next(700, 900);
                 }
                 else
                 {
-                    xMusuh[i] -= 10;
+                    xMusuh[i] -= 20;
                 }
-
+                ///////////////////loop bullet
                 for (int j = 0; j < bulletArrX.Count(); j++)
                 {
                     if (bulletArrX[j] >= xMusuh[i] && bulletArrX[j] < xMusuh[i] + 40 && bulletArrY[j] >= yMusuh[i] && bulletArrY[j] < yMusuh[i] + 40)
@@ -159,7 +155,7 @@ namespace Proyek_PV___Space_Impact
 
             for (int i = 0; i < wallHeight.Count(); i++)
             {
-                wallX[i] -= 10;
+                wallX[i] -= 20;
                 if (wallX[i] >= x && wallX[i] < x - 80 && wallHeight[i] >= y && wallHeight[i] < y - 80)
                 {
                     MessageBox.Show("test");
@@ -175,30 +171,27 @@ namespace Proyek_PV___Space_Impact
 
         private void timer2_Tick(object sender, EventArgs e)
         {
+            waktu--;
+            label3.Text = waktu.ToString();
             if (level == 1)
             {
-                if (waktu == 10)
+                if (waktu <= 0)
                 {
-                    waktu = 1;
-                    level = 2;
-                    MessageBox.Show("Next Level");
+                    nextLevel();
                 }
             }
             else if (level == 2)
             {
-                if (waktu == 50)
+                if (waktu <= 0)
                 {
-                    label3.Text = "1";
-                    label5.Text = "3";
+                    nextLevel();
                 }
             }
-            waktu++;
-            label3.Text = waktu.ToString();
         }
 
         private void BattleForm_KeyDown(object sender, KeyEventArgs e)
         {
-            //gerak
+            ///////////////////gerak
             if (e.KeyCode == Keys.Up)
             {
                 if (y > 30)
@@ -233,6 +226,19 @@ namespace Proyek_PV___Space_Impact
                 bulletArrY.Add(y + 30);
                 bulletArr.Add(true);
             }
+        }
+
+        private void nextLevel()
+        {
+            level++;
+            t1Gerak.Enabled = false;
+            t2Waktu.Enabled = false;
+            MessageBox.Show("Congratulation, You finished level " + (level - 1), "Next Level");
+            t1Gerak.Enabled = true;
+            t2Waktu.Enabled = true;
+            waktu = level * 15;
+            label5.Text = level.ToString();
+            label3.Text = waktu.ToString();
         }
     }
 }
