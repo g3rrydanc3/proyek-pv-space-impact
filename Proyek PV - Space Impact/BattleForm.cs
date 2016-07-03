@@ -37,12 +37,11 @@ namespace Proyek_PV___Space_Impact
         List<int> wallBotX = new List<int>();
         List<int> wallBotHeight = new List<int>();
 
-        int[] xMusuh;
-        int[] yMusuh;
-        int[] jenis;
-
+        List<int> xMusuh = new List<int>();
+        List<int> yMusuh = new List<int>();
+        List<int> jenis = new List<int>();
         private void Form6_Load(object sender, EventArgs e)
-        {
+        {            
             imgPlayer = Image.FromFile("pesawat1.png");
             imgBullet = Image.FromFile("peluru.png");
             imgMusuh1 = Image.FromFile("musuh1.png");
@@ -50,36 +49,14 @@ namespace Proyek_PV___Space_Impact
             imgGround = Image.FromFile("groundSprite.png");
             this.BackgroundImage = Image.FromFile("backgroundgame.jpg");
 
-            waktu = 1;
+            waktu = 15;
             level = 1;
-<<<<<<< HEAD
             life = 3;
             label3.Text = waktu.ToString();
             x = 30;
             y = this.Height / 2 - 50;
             ///////////////////init random
             newRandom();
-=======
-            x = 0;
-            y = this.Height / 2 - 50;
-            xMusuh = new int[5];
-            yMusuh = new int[5];
-            jenis = new int[5];
-            //random musuh
-            for (int i = 0; i < 5; i++)
-            {
-                jenis[i] = rand.Next(0, 2);
-                xMusuh[i] = rand.Next(800, 850);
-                yMusuh[i] = rand.Next(40, 425);
-            }
-            //random wall
-            for (int i = 0; i < 30; i++)
-            {
-                wallX.Add(i*60);
-                wallHeight.Add(rand.Next(10,300));
-            }
-
->>>>>>> parent of 951bc6c... timer faster, nextlevel
         }
 
         private void Form6_Paint(object sender, PaintEventArgs e)
@@ -88,13 +65,8 @@ namespace Proyek_PV___Space_Impact
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             TextureBrush bt = new TextureBrush(imgGround);
 
-<<<<<<< HEAD
             ///////////////////gambar wall
             for (int i = 0; i < wallBotHeight.Count(); i++)
-=======
-            //gambar wall
-            for (int i = 0; i < wallHeight.Count(); i++)
->>>>>>> parent of 951bc6c... timer faster, nextlevel
             {
                 g.FillRectangle(bt, wallBotX[i], 540 - wallBotHeight[i], 50, wallBotHeight[i]);
             }
@@ -104,10 +76,10 @@ namespace Proyek_PV___Space_Impact
                 g.FillRectangle(bt, wallTopX[i], 50, 50, wallTopHeight[i]);
             }
 
-            //gambar player
+            ///////////////////gambar player
             g.DrawImage(imgPlayer, x, y, 80, 80);
 
-            //gambar bullet
+            ///////////////////gambar bullet
             for (int i = 0; i < bulletArrX.Count(); i++)
             {
                 if (bulletArr[i] == true)
@@ -116,8 +88,8 @@ namespace Proyek_PV___Space_Impact
                 }
             }
 
-            //gambar musuh
-            for (int i = 0; i < 5; i++)
+            ///////////////////gambar musuh
+            for (int i = 0; i < xMusuh.Count(); i++)
             {
                 if (jenis[i] == 0)
                 {
@@ -125,7 +97,7 @@ namespace Proyek_PV___Space_Impact
                 }
                 else if (jenis[i] == 1)
                 {
-                    g.DrawImage(imgMusuh1, xMusuh[i], yMusuh[i], 40, 40);
+                    g.DrawImage(imgMusuh2, xMusuh[i], yMusuh[i], 40, 40);
                 }
             }
             
@@ -133,7 +105,7 @@ namespace Proyek_PV___Space_Impact
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            //gerak bullet
+            ///////////////////gerak bullet
             for (int i = 0; i < bulletArrX.Count(); i++)
             {
                 if (bulletArr[i] == true)
@@ -141,20 +113,19 @@ namespace Proyek_PV___Space_Impact
                     bulletArrX[i] += 40;
                 }
             }
-
-            for (int i = 0; i < 5; i++)
+            ///////////////////loop musuh
+            for (int i = 0; i < xMusuh.Count(); i++)
             {
-                //xMusuh[i] -= 10;
-                if (xMusuh[i] == 0)
+                if (xMusuh[i] <= 0)
                 {
                     yMusuh[i] = rand.Next(40, 440);
                     xMusuh[i] = rand.Next(700, 900);
                 }
                 else
                 {
-                    xMusuh[i] -= 10;
+                    xMusuh[i] -= 20;
                 }
-
+                ///////////////////loop bullet
                 for (int j = 0; j < bulletArrX.Count(); j++)
                 {
                     if (bulletArrX[j] >= xMusuh[i] && bulletArrX[j] < xMusuh[i] + 40 && bulletArrY[j] >= yMusuh[i] && bulletArrY[j] < yMusuh[i] + 40)
@@ -180,13 +151,8 @@ namespace Proyek_PV___Space_Impact
             //loop wall
             for (int i = 0; i < wallBotHeight.Count(); i++)
             {
-<<<<<<< HEAD
                 wallBotX[i] -= 20;
                 if (wallBotX[i] >= x && wallBotX[i] < x - 80 && wallBotHeight[i] >= y && wallBotHeight[i] < y - 80)
-=======
-                wallX[i] -= 10;
-                if (wallX[i] >= x && wallX[i] < x - 80 && wallHeight[i] >= y && wallHeight[i] < y - 80)
->>>>>>> parent of 951bc6c... timer faster, nextlevel
                 {
                     MessageBox.Show("test");
                     life--;
@@ -204,30 +170,27 @@ namespace Proyek_PV___Space_Impact
 
         private void timer2_Tick(object sender, EventArgs e)
         {
+            waktu--;
+            label3.Text = waktu.ToString();
             if (level == 1)
             {
-                if (waktu == 10)
+                if (waktu <= 0)
                 {
-                    waktu = 1;
-                    level = 2;
-                    MessageBox.Show("Next Level");
+                    nextLevel();
                 }
             }
             else if (level == 2)
             {
-                if (waktu == 50)
+                if (waktu <= 0)
                 {
-                    label3.Text = "1";
-                    label5.Text = "3";
+                    nextLevel();
                 }
             }
-            waktu++;
-            label3.Text = waktu.ToString();
         }
 
         private void BattleForm_KeyDown(object sender, KeyEventArgs e)
         {
-            //gerak
+            ///////////////////gerak
             if (e.KeyCode == Keys.Up)
             {
                 if (y > 50)
@@ -264,7 +227,6 @@ namespace Proyek_PV___Space_Impact
             }
             //this.Invalidate();
         }
-<<<<<<< HEAD
 
         private void nextLevel()
         {
@@ -341,7 +303,5 @@ namespace Proyek_PV___Space_Impact
         {
             this.Invalidate();
         }
-=======
->>>>>>> parent of 951bc6c... timer faster, nextlevel
     }
 }
