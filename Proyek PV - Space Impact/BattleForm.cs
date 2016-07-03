@@ -125,6 +125,16 @@ namespace Proyek_PV___Space_Impact
                 {
                     xMusuh[i] -= 20;
                 }
+
+                ////////////////////check nabrak musuh & player
+                if (xMusuh[i] >= x && xMusuh[i] < x + 80 && yMusuh[i] >= y && yMusuh[i] < y + 80)
+                {
+                    life--;
+                    refreshLife();
+                    x = 0;
+                    y = this.Height / 2 - 50;
+                }
+
                 ///////////////////loop bullet
                 for (int j = 0; j < bulletArrX.Count(); j++)
                 {
@@ -152,9 +162,9 @@ namespace Proyek_PV___Space_Impact
             for (int i = 0; i < wallBotHeight.Count(); i++)
             {
                 wallBotX[i] -= 20;
-                if (wallBotX[i] >= x && wallBotX[i] < x - 80 && wallBotHeight[i] >= y && wallBotHeight[i] < y - 80)
+                if (wallBotX[i] >= x && wallBotX[i] < x + 80 && 540 - wallBotHeight[i] >= y && 540 - wallBotHeight[i] < y + 80)
                 {
-                    MessageBox.Show("test");
+                    //MessageBox.Show("test");
                     life--;
                     refreshLife();
                     x = 0;
@@ -164,6 +174,14 @@ namespace Proyek_PV___Space_Impact
             for (int i = 0; i < wallTopHeight.Count(); i++)
             {
                 wallTopX[i] -= 20;
+                if (wallTopX[i] >= x && wallTopX[i] < x + 80 && 50 >= y && 50 < y + 80)
+                {
+                    //MessageBox.Show("test");
+                    life--;
+                    refreshLife();
+                    x = 0;
+                    y = this.Height / 2 - 50;
+                }
             }
             //this.Invalidate();
         }
@@ -236,7 +254,7 @@ namespace Proyek_PV___Space_Impact
             MessageBox.Show("Congratulation, You finished level " + (level - 1), "Next Level");
             t1Gerak.Enabled = true;
             t2Waktu.Enabled = true;
-            waktu = level * 15;
+            waktu = level * 40;
             label5.Text = level.ToString();
             label3.Text = waktu.ToString();
             bulletArr.Clear();
