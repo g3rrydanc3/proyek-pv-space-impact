@@ -18,7 +18,7 @@ namespace Proyek_PV___Space_Impact
         }
 
         Random rand = new Random();
-        int waktu, level, life;
+        int waktu, level, life, blink;
 
         int x;
         int y;
@@ -49,9 +49,10 @@ namespace Proyek_PV___Space_Impact
             imgGround = Image.FromFile("groundSprite.png");
             this.BackgroundImage = Image.FromFile("backgroundgame.jpg");
 
-            waktu = 15;
+            waktu = 30;
             level = 1;
             life = 3;
+            blink = 10;
             label3.Text = waktu.ToString();
             x = 30;
             y = this.Height / 2 - 50;
@@ -77,8 +78,20 @@ namespace Proyek_PV___Space_Impact
             }
 
             ///////////////////gambar player
-            g.DrawImage(imgPlayer, x, y, 80, 80);
-
+            if (blink >=1)
+	        {
+		        if (blink % 2 == 0)
+                {
+                    //to do player transparent
+                    g.DrawImage(imgPlayer, x, y, 80, 80);
+                }
+	        }
+            else
+	        {
+                g.DrawImage(imgPlayer, x, y, 80, 80);
+	        }
+            
+            
             ///////////////////gambar bullet
             for (int i = 0; i < bulletArrX.Count(); i++)
             {
@@ -105,14 +118,6 @@ namespace Proyek_PV___Space_Impact
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            ///////////////////gerak bullet
-            for (int i = 0; i < bulletArrX.Count(); i++)
-            {
-                if (bulletArr[i] == true)
-                {
-                    bulletArrX[i] += 40;
-                }
-            }
             ///////////////////loop musuh
             for (int i = 0; i < xMusuh.Count(); i++)
             {
@@ -125,16 +130,7 @@ namespace Proyek_PV___Space_Impact
                 {
                     xMusuh[i] -= 20;
                 }
-
-                ////////////////////check nabrak musuh & player
-                if (xMusuh[i] >= x && xMusuh[i] < x + 80 && yMusuh[i] >= y && yMusuh[i] < y + 80)
-                {
-                    life--;
-                    refreshLife();
-                    x = 0;
-                    y = this.Height / 2 - 50;
-                }
-
+                
                 ///////////////////loop bullet
                 for (int j = 0; j < bulletArrX.Count(); j++)
                 {
@@ -158,29 +154,69 @@ namespace Proyek_PV___Space_Impact
                     }
                 }
             }
-            //loop wall
-            for (int i = 0; i < wallBotHeight.Count(); i++)
-            {
-                wallBotX[i] -= 20;
-                if (wallBotX[i] >= x && wallBotX[i] < x + 80 && 540 - wallBotHeight[i] >= y && 540 - wallBotHeight[i] < y + 80)
-                {
-                    //MessageBox.Show("test");
-                    life--;
-                    refreshLife();
-                    x = 0;
-                    y = this.Height / 2 - 50;
-                }
-            }
+
+            ///////////////////gerak wall
             for (int i = 0; i < wallTopHeight.Count(); i++)
             {
                 wallTopX[i] -= 20;
-                if (wallTopX[i] >= x && wallTopX[i] < x + 80 && 50 >= y && 50 < y + 80)
+            }
+            for (int i = 0; i < wallBotHeight.Count(); i++)
+            {
+                wallBotX[i] -= 20;
+            }
+            
+            ///////////////////gerak bullet
+            for (int i = 0; i < bulletArrX.Count(); i++)
+            {
+                if (bulletArr[i] == true)
                 {
-                    //MessageBox.Show("test");
-                    life--;
-                    refreshLife();
-                    x = 0;
-                    y = this.Height / 2 - 50;
+                    bulletArrX[i] += 40;
+                }
+            }
+
+            if (blink >= 1)
+            {
+                blink--;
+            }
+            else
+            {
+                for (int i = 0; i < xMusuh.Count(); i++)
+                {
+                    ////////////////////check nabrak musuh & player
+                    if (xMusuh[i] >= x && xMusuh[i] < x + 80 && yMusuh[i] >= y && yMusuh[i] < y + 80)
+                    {
+                        life--;
+                        refreshLife();
+                        x = 0;
+                        y = this.Height / 2 - 50;
+                        blink = 10;
+                    }
+                }
+                ////////////////////loop wall bot
+                for (int i = 0; i < wallBotHeight.Count(); i++)
+                {
+                    if (wallBotX[i] >= x && wallBotX[i] < x + 80 && 540 - wallBotHeight[i] >= y && 540 - wallBotHeight[i] < y + 80)
+                    {
+                        //MessageBox.Show("test");
+                        life--;
+                        refreshLife();
+                        x = 0;
+                        y = this.Height / 2 - 50;
+                        blink = 10;
+                    }
+                }
+                ////////////////////loop wall top
+                for (int i = 0; i < wallTopHeight.Count(); i++)
+                {
+                    if (wallTopX[i] >= x && wallTopX[i] < x + 80 && 50 >= y && 50 < y + 80)
+                    {
+                        //MessageBox.Show("test");
+                        life--;
+                        refreshLife();
+                        x = 0;
+                        y = this.Height / 2 - 50;
+                        blink = 10;
+                    }
                 }
             }
             //this.Invalidate();
@@ -254,7 +290,7 @@ namespace Proyek_PV___Space_Impact
             MessageBox.Show("Congratulation, You finished level " + (level - 1), "Next Level");
             t1Gerak.Enabled = true;
             t2Waktu.Enabled = true;
-            waktu = level * 40;
+            waktu = level * 25;
             label5.Text = level.ToString();
             label3.Text = waktu.ToString();
             bulletArr.Clear();
@@ -314,6 +350,10 @@ namespace Proyek_PV___Space_Impact
                 life1.Visible = false;
                 life2.Visible = false;
                 life3.Visible = false;
+                t1Gerak.Enabled = false;
+                t2Waktu.Enabled = false;
+                t3Refresh.Enabled = false;
+                MessageBox.Show("Game Over");
             }
         }
 

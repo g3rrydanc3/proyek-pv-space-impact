@@ -64,9 +64,9 @@
             this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.Location = new System.Drawing.Point(624, 11);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(65, 25);
+            this.label8.Size = new System.Drawing.Size(54, 25);
             this.label8.TabIndex = 22;
-            this.label8.Text = "Lives :";
+            this.label8.Text = "Life :";
             // 
             // label5
             // 
@@ -178,7 +178,6 @@
             // t3Refresh
             // 
             this.t3Refresh.Enabled = true;
-            this.t3Refresh.Interval = 1;
             this.t3Refresh.Tick += new System.EventHandler(this.t3Refresh_Tick);
             // 
             // BattleForm
