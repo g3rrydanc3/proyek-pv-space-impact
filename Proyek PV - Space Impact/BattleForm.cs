@@ -15,15 +15,10 @@ namespace Proyek_PV___Space_Impact
         public BattleForm()
         {
             InitializeComponent();
-
-            //flick reduction (?)
-            SetStyle(ControlStyles.UserPaint, true);
-            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
-            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
         }
 
         Random rand = new Random();
-        int waktu, level;
+        int waktu, level, life;
 
         int x;
         int y;
@@ -31,12 +26,16 @@ namespace Proyek_PV___Space_Impact
         Image imgBullet;
         Image imgMusuh1;
         Image imgMusuh2;
+        Image imgGround;
         List<int> bulletArrX = new List<int>();
         List<int> bulletArrY = new List<int>();
         List<bool> bulletArr = new List<bool>();
 
-        List<int> wallX = new List<int>();
-        List<int> wallHeight = new List<int>();
+        List<int> wallTopX = new List<int>();
+        List<int> wallTopHeight = new List<int>();
+
+        List<int> wallBotX = new List<int>();
+        List<int> wallBotHeight = new List<int>();
 
         List<int> xMusuh = new List<int>();
         List<int> yMusuh = new List<int>();
@@ -47,38 +46,33 @@ namespace Proyek_PV___Space_Impact
             imgBullet = Image.FromFile("peluru.png");
             imgMusuh1 = Image.FromFile("musuh1.png");
             imgMusuh2 = Image.FromFile("musuh2.png");
+            imgGround = Image.FromFile("groundSprite.png");
             this.BackgroundImage = Image.FromFile("backgroundgame.jpg");
 
             waktu = 15;
             level = 1;
+            life = 3;
             label3.Text = waktu.ToString();
-            x = 0;
+            x = 30;
             y = this.Height / 2 - 50;
-            ///////////////////random musuh
-            for (int i = 0; i < 5; i++)
-            {
-                jenis.Add(rand.Next(0, 2));
-                xMusuh.Add(rand.Next(800, 850));
-                yMusuh.Add(rand.Next(40, 425));
-            }
-            ///////////////////random wall
-            for (int i = 0; i < 30; i++)
-            {
-                wallX.Add(i*200);
-                wallHeight.Add(rand.Next(10,300));
-            }
-
+            ///////////////////init random
+            newRandom();
         }
 
         private void Form6_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            Brush b = new SolidBrush(Color.Green);
+            TextureBrush bt = new TextureBrush(imgGround);
 
             ///////////////////gambar wall
-            for (int i = 0; i < wallHeight.Count(); i++)
+            for (int i = 0; i < wallBotHeight.Count(); i++)
             {
-                g.FillRectangle(b, wallX[i], 540 - wallHeight[i], 50, wallHeight[i]);
+                g.FillRectangle(bt, wallBotX[i], 540 - wallBotHeight[i], 50, wallBotHeight[i]);
+            }
+
+            for (int i = 0; i < wallTopHeight.Count(); i++)
+            {
+                g.FillRectangle(bt, wallTopX[i], 50, 50, wallTopHeight[i]);
             }
 
             ///////////////////gambar player
@@ -152,19 +146,22 @@ namespace Proyek_PV___Space_Impact
                     }
                 }
             }
-
-            for (int i = 0; i < wallHeight.Count(); i++)
+            //loop wall
+            for (int i = 0; i < wallBotHeight.Count(); i++)
             {
-                wallX[i] -= 20;
-                if (wallX[i] >= x && wallX[i] < x - 80 && wallHeight[i] >= y && wallHeight[i] < y - 80)
+                wallBotX[i] -= 20;
+                if (wallBotX[i] >= x && wallBotX[i] < x - 80 && wallBotHeight[i] >= y && wallBotHeight[i] < y - 80)
                 {
                     MessageBox.Show("test");
-                    int lives = Convert.ToInt32(label7.Text);
-                    lives -= 1;
-                    label7.Text = lives.ToString();
+                    life--;
+                    refreshLife();
                     x = 0;
                     y = this.Height / 2 - 50;
                 }
+            }
+            for (int i = 0; i < wallTopHeight.Count(); i++)
+            {
+                wallTopX[i] -= 20;
             }
             this.Invalidate();
         }
@@ -194,7 +191,7 @@ namespace Proyek_PV___Space_Impact
             ///////////////////gerak
             if (e.KeyCode == Keys.Up)
             {
-                if (y > 30)
+                if (y > 50)
                 {
                     y -= 10;
                 }
@@ -226,6 +223,7 @@ namespace Proyek_PV___Space_Impact
                 bulletArrY.Add(y + 30);
                 bulletArr.Add(true);
             }
+            this.Invalidate();
         }
 
         private void nextLevel()
@@ -239,6 +237,64 @@ namespace Proyek_PV___Space_Impact
             waktu = level * 15;
             label5.Text = level.ToString();
             label3.Text = waktu.ToString();
+            bulletArr.Clear();
+            bulletArrX.Clear();
+            bulletArrY.Clear();
+            xMusuh.Clear();
+            yMusuh.Clear();
+            jenis.Clear();
+            wallBotHeight.Clear();
+            wallBotX.Clear();
+            wallTopHeight.Clear();
+            wallTopX.Clear();
+            newRandom();
+        }
+
+        private void newRandom()
+        {
+            ///////////////////random wall
+            for (int i = 0; i < 30; i++)
+            {
+                wallBotX.Add(rand.Next(i * 400, i * 500));
+                wallBotHeight.Add(rand.Next(0, 4) * 50);
+                wallTopX.Add(rand.Next(i * 300, i * 400));
+                wallTopHeight.Add(rand.Next(0, 4) * 50);
+            }
+            ///////////////////random musuh
+            for (int i = 0; i < 5; i++)
+            {
+                jenis.Add(rand.Next(0, 2));
+                xMusuh.Add(rand.Next(600, 1200));
+                yMusuh.Add(rand.Next(50, 425));
+            }
+        }
+
+        private void refreshLife()
+        {
+            if (life == 3)
+            {
+                life1.Visible = true;
+                life2.Visible = true;
+                life3.Visible = true;
+            }
+            else if (life == 2)
+            {
+                life1.Visible = true;
+                life2.Visible = true;
+                life3.Visible = false;
+            }
+            else if (life == 1)
+            {
+                life1.Visible = true;
+                life2.Visible = false;
+                life3.Visible = false;
+            }
+            else
+            {
+                life1.Visible = false;
+                life2.Visible = false;
+                life3.Visible = false;
+            }
         }
     }
 }

@@ -1,0 +1,79 @@
+D:\Tugas\Semester 2\PV\Proyek PV - Space Impact\Proyek PV - Space Impact\bin\Debug\Proyek PV - Space Impact.exe.config
+D:\Tugas\Semester 2\PV\Proyek PV - Space Impact\Proyek PV - Space Impact\bin\Debug\Proyek PV - Space Impact.exe
+D:\Tugas\Semester 2\PV\Proyek PV - Space Impact\Proyek PV - Space Impact\bin\Debug\Proyek PV - Space Impact.pdb
+D:\Tugas\Semester 2\PV\Proyek PV - Space Impact\Proyek PV - Space Impact\obj\Debug\Proyek PV - Space Impact.csprojResolveAssemblyReference.cache
+D:\Tugas\Semester 2\PV\Proyek PV - Space Impact\Proyek PV - Space Impact\obj\Debug\Proyek_PV___Space_Impact.Form1.resources
+D:\Tugas\Semester 2\PV\Proyek PV - Space Impact\Proyek PV - Space Impact\obj\Debug\Proyek_PV___Space_Impact.Properties.Resources.resources
+D:\Tugas\Semester 2\PV\Proyek PV - Space Impact\Proyek PV - Space Impact\obj\Debug\Proyek PV - Space Impact.csproj.GenerateResource.Cache
+D:\Tugas\Semester 2\PV\Proyek PV - Space Impact\Proyek PV - Space Impact\obj\Debug\Proyek PV - Space Impact.exe
+D:\Tugas\Semester 2\PV\Proyek PV - Space Impact\Proyek PV - Space Impact\obj\Debug\Proyek PV - Space Impact.pdb
+D:\Tugas\Semester 2\PV\Proyek PV - Space Impact\Proyek PV - Space Impact\obj\Debug\Proyek_PV___Space_Impact.Form2.resources
+D:\Tugas\Semester 2\PV\Proyek PV - Space Impact\Proyek PV - Space Impact\obj\Debug\Proyek_PV___Space_Impact.Form3.resources
+D:\Tugas\Semester 2\PV\Proyek PV - Space Impact\Proyek PV - Space Impact\obj\Debug\Proyek_PV___Space_Impact.Form4.resources
+D:\Tugas\Semester 2\PV\Proyek PV - Space Impact\Proyek PV - Space Impact\obj\Debug\Proyek_PV___Space_Impact.Form5.resources
+D:\Tugas\Semester 2\PV\Proyek PV - Space Impact\Proyek PV - Space Impact\obj\Debug\Proyek_PV___Space_Impact.Form6.resources
+D:\Users\ger_2\Downloads\Proyek PV - Space Impact\Proyek PV - Space Impact\bin\Debug\Proyek PV - Space Impact.exe.config
+D:\Users\ger_2\Downloads\Proyek PV - Space Impact\Proyek PV - Space Impact\obj\Debug\Proyek PV - Space Impact.exe
+D:\Users\ger_2\Downloads\Proyek PV - Space Impact\Proyek PV - Space Impact\obj\Debug\Proyek PV - Space Impact.pdb
+D:\Users\ger_2\Downloads\Proyek PV - Space Impact\Proyek PV - Space Impact\bin\Debug\Proyek PV - Space Impact.exe
+D:\Users\ger_2\Downloads\Proyek PV - Space Impact\Proyek PV - Space Impact\bin\Debug\Proyek PV - Space Impact.pdb
+D:\Users\ger_2\Downloads\Proyek PV - Space Impact\Proyek PV - Space Impact\obj\Debug\Proyek PV - Space Impact.csprojResolveAssemblyReference.cache
+D:\Users\ger_2\Downloads\Proyek PV - Space Impact\Proyek PV - Space Impact\obj\Debug\Proyek_PV___Space_Impact.Properties.Resources.resources
+D:\Users\ger_2\Downloads\Proyek PV - Space Impact\Proyek PV - Space Impact\obj\Debug\Proyek PV - Space Impact.csproj.GenerateResource.Cache
+D:\Users\ger_2\Downloads\Proyek PV - Space Impact\Proyek PV - Space Impact\obj\Debug\Proyek_PV___Space_Impact.IntroForm.resources
+D:\Users\ger_2\Downloads\Proyek PV - Space Impact\Proyek PV - Space Impact\obj\Debug\Proyek_PV___Space_Impact.MenuForm.resources
+D:\Users\ger_2\Downloads\Proyek PV - Space Impact\Proyek PV - Space Impact\obj\Debug\Proyek_PV___Space_Impact.ChoosePlaneForm.resources
+D:\Users\ger_2\Downloads\Proyek PV - Space Impact\Proyek PV - Space Impact\obj\Debug\Proyek_PV___Space_Impact.LoadingForm.resources
+D:\Users\ger_2\Downloads\Proyek PV - Space Impact\Proyek PV - Space Impact\obj\Debug\Proyek_PV___Space_Impact.BattleForm.resources
+D:\Users\ger_2\OneDrive\Code\Proyek PV - Space Impact\Proyek PV - Space Impact\bin\Debug\Proyek PV - Space Impact.exe.config
+D:\Users\ger_2\OneDrive\Code\Proyek PV - Space Impact\Proyek PV - Space Impact\obj\Debug\Proyek PV - Space Impact.exe
+D:\Users\ger_2\OneDrive\Code\Proyek PV - Space Impact\Proyek PV - Space Impact\obj\Debug\Proyek PV - Space Impact.pdb
+D:\Users\ger_2\OneDrive\Code\Proyek PV - Space Impact\Proyek PV - Space Impact\bin\Debug\Proyek PV - Space Impact.exe
+D:\Users\ger_2\OneDrive\Code\Proyek PV - Space Impact\Proyek PV - Space Impact\bin\Debug\Proyek PV - Space Impact.pdb
+D:\Users\ger_2\OneDrive\Code\Proyek PV - Space Impact\Proyek PV - Space Impact\obj\Debug\Proyek PV - Space Impact.csprojResolveAssemblyReference.cache
+D:\Users\ger_2\OneDrive\Code\Proyek PV - Space Impact\Proyek PV - Space Impact\obj\Debug\Proyek_PV___Space_Impact.IntroForm.resources
+D:\Users\ger_2\OneDrive\Code\Proyek PV - Space Impact\Proyek PV - Space Impact\obj\Debug\Proyek_PV___Space_Impact.MenuForm.resources
+D:\Users\ger_2\OneDrive\Code\Proyek PV - Space Impact\Proyek PV - Space Impact\obj\Debug\Proyek_PV___Space_Impact.ChoosePlaneForm.resources
+D:\Users\ger_2\OneDrive\Code\Proyek PV - Space Impact\Proyek PV - Space Impact\obj\Debug\Proyek_PV___Space_Impact.LoadingForm.resources
+D:\Users\ger_2\OneDrive\Code\Proyek PV - Space Impact\Proyek PV - Space Impact\obj\Debug\Proyek_PV___Space_Impact.BattleForm.resources
+D:\Users\ger_2\OneDrive\Code\Proyek PV - Space Impact\Proyek PV - Space Impact\obj\Debug\Proyek_PV___Space_Impact.Properties.Resources.resources
+D:\Users\ger_2\OneDrive\Code\Proyek PV - Space Impact\Proyek PV - Space Impact\obj\Debug\Proyek PV - Space Impact.csproj.GenerateResource.Cache
+C:\Users\alfon\Desktop\New folder\Proyek PV - Space Impact\bin\Debug\Proyek PV - Space Impact.exe.config
+C:\Users\alfon\Desktop\New folder\Proyek PV - Space Impact\obj\Debug\Proyek PV - Space Impact.exe
+C:\Users\alfon\Desktop\New folder\Proyek PV - Space Impact\obj\Debug\Proyek PV - Space Impact.pdb
+C:\Users\alfon\Desktop\New folder\Proyek PV - Space Impact\bin\Debug\Proyek PV - Space Impact.exe
+C:\Users\alfon\Desktop\New folder\Proyek PV - Space Impact\bin\Debug\Proyek PV - Space Impact.pdb
+C:\Users\alfon\Desktop\New folder\Proyek PV - Space Impact\obj\Debug\Proyek PV - Space Impact.csprojResolveAssemblyReference.cache
+C:\Users\alfon\Desktop\New folder\Proyek PV - Space Impact\obj\Debug\Proyek_PV___Space_Impact.IntroForm.resources
+C:\Users\alfon\Desktop\New folder\Proyek PV - Space Impact\obj\Debug\Proyek_PV___Space_Impact.MenuForm.resources
+C:\Users\alfon\Desktop\New folder\Proyek PV - Space Impact\obj\Debug\Proyek_PV___Space_Impact.ChoosePlaneForm.resources
+C:\Users\alfon\Desktop\New folder\Proyek PV - Space Impact\obj\Debug\Proyek_PV___Space_Impact.LoadingForm.resources
+C:\Users\alfon\Desktop\New folder\Proyek PV - Space Impact\obj\Debug\Proyek_PV___Space_Impact.BattleForm.resources
+C:\Users\alfon\Desktop\New folder\Proyek PV - Space Impact\obj\Debug\Proyek_PV___Space_Impact.Properties.Resources.resources
+C:\Users\alfon\Desktop\New folder\Proyek PV - Space Impact\obj\Debug\Proyek PV - Space Impact.csproj.GenerateResource.Cache
+D:\Users\ger_2\Downloads\New folder\Proyek PV - Space Impact\bin\Debug\Proyek PV - Space Impact.exe.config
+D:\Users\ger_2\Downloads\New folder\Proyek PV - Space Impact\obj\Debug\Proyek PV - Space Impact.exe
+D:\Users\ger_2\Downloads\New folder\Proyek PV - Space Impact\obj\Debug\Proyek PV - Space Impact.pdb
+D:\Users\ger_2\Downloads\New folder\Proyek PV - Space Impact\bin\Debug\Proyek PV - Space Impact.exe
+D:\Users\ger_2\Downloads\New folder\Proyek PV - Space Impact\bin\Debug\Proyek PV - Space Impact.pdb
+D:\Users\ger_2\Downloads\New folder\Proyek PV - Space Impact\obj\Debug\Proyek PV - Space Impact.csprojResolveAssemblyReference.cache
+D:\Users\ger_2\Downloads\New folder\Proyek PV - Space Impact\obj\Debug\Proyek_PV___Space_Impact.IntroForm.resources
+D:\Users\ger_2\Downloads\New folder\Proyek PV - Space Impact\obj\Debug\Proyek_PV___Space_Impact.MenuForm.resources
+D:\Users\ger_2\Downloads\New folder\Proyek PV - Space Impact\obj\Debug\Proyek_PV___Space_Impact.ChoosePlaneForm.resources
+D:\Users\ger_2\Downloads\New folder\Proyek PV - Space Impact\obj\Debug\Proyek_PV___Space_Impact.LoadingForm.resources
+D:\Users\ger_2\Downloads\New folder\Proyek PV - Space Impact\obj\Debug\Proyek_PV___Space_Impact.BattleForm.resources
+D:\Users\ger_2\Downloads\New folder\Proyek PV - Space Impact\obj\Debug\Proyek_PV___Space_Impact.Properties.Resources.resources
+D:\Users\ger_2\Downloads\New folder\Proyek PV - Space Impact\obj\Debug\Proyek PV - Space Impact.csproj.GenerateResource.Cache
+D:\GitHub\proyek-pv-space-impact\Proyek PV - Space Impact\bin\Debug\Proyek PV - Space Impact.exe.config
+D:\GitHub\proyek-pv-space-impact\Proyek PV - Space Impact\obj\Debug\Proyek PV - Space Impact.exe
+D:\GitHub\proyek-pv-space-impact\Proyek PV - Space Impact\obj\Debug\Proyek PV - Space Impact.pdb
+D:\GitHub\proyek-pv-space-impact\Proyek PV - Space Impact\bin\Debug\Proyek PV - Space Impact.exe
+D:\GitHub\proyek-pv-space-impact\Proyek PV - Space Impact\bin\Debug\Proyek PV - Space Impact.pdb
+D:\GitHub\proyek-pv-space-impact\Proyek PV - Space Impact\obj\Debug\Proyek PV - Space Impact.csprojResolveAssemblyReference.cache
+D:\GitHub\proyek-pv-space-impact\Proyek PV - Space Impact\obj\Debug\Proyek_PV___Space_Impact.IntroForm.resources
+D:\GitHub\proyek-pv-space-impact\Proyek PV - Space Impact\obj\Debug\Proyek_PV___Space_Impact.MenuForm.resources
+D:\GitHub\proyek-pv-space-impact\Proyek PV - Space Impact\obj\Debug\Proyek_PV___Space_Impact.ChoosePlaneForm.resources
+D:\GitHub\proyek-pv-space-impact\Proyek PV - Space Impact\obj\Debug\Proyek_PV___Space_Impact.LoadingForm.resources
+D:\GitHub\proyek-pv-space-impact\Proyek PV - Space Impact\obj\Debug\Proyek_PV___Space_Impact.BattleForm.resources
+D:\GitHub\proyek-pv-space-impact\Proyek PV - Space Impact\obj\Debug\Proyek_PV___Space_Impact.Properties.Resources.resources
+D:\GitHub\proyek-pv-space-impact\Proyek PV - Space Impact\obj\Debug\Proyek PV - Space Impact.csproj.GenerateResource.Cache

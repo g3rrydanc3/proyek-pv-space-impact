@@ -56,7 +56,7 @@ namespace Proyek_PV___Space_Impact
                 splashed = 2;
                 timer1.Stop();
                 Label label = new Label();
-                label.Text = "Press Enter to continue...";
+                label.Text = "Press any key to continue...";
                 label.Size = new Size(500, 70);
                 label.Font = new Font("Century gothic", 18, FontStyle.Bold);
                 label.Location = new Point(0, 500);
@@ -77,11 +77,8 @@ namespace Proyek_PV___Space_Impact
         {
             if (splashed == 2)
             {
-                if (e.KeyCode == Keys.Enter)
-                {
-                    MenuForm f = new MenuForm();
-                    f.ShowDialog();
-                }
+                MenuForm f = new MenuForm();
+                f.ShowDialog();
             }
         }
 
