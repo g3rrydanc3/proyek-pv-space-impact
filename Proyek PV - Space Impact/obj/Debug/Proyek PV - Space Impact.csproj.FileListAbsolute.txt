@@ -77,3 +77,16 @@ D:\GitHub\proyek-pv-space-impact\Proyek PV - Space Impact\obj\Debug\Proyek_PV___
 D:\GitHub\proyek-pv-space-impact\Proyek PV - Space Impact\obj\Debug\Proyek_PV___Space_Impact.BattleForm.resources
 D:\GitHub\proyek-pv-space-impact\Proyek PV - Space Impact\obj\Debug\Proyek_PV___Space_Impact.Properties.Resources.resources
 D:\GitHub\proyek-pv-space-impact\Proyek PV - Space Impact\obj\Debug\Proyek PV - Space Impact.csproj.GenerateResource.Cache
+\\Gerry-pc\d\GitHub\proyek-pv-space-impact\Proyek PV - Space Impact\bin\Debug\Proyek PV - Space Impact.exe.config
+\\Gerry-pc\d\GitHub\proyek-pv-space-impact\Proyek PV - Space Impact\obj\Debug\Proyek PV - Space Impact.exe
+\\Gerry-pc\d\GitHub\proyek-pv-space-impact\Proyek PV - Space Impact\obj\Debug\Proyek PV - Space Impact.pdb
+\\Gerry-pc\d\GitHub\proyek-pv-space-impact\Proyek PV - Space Impact\bin\Debug\Proyek PV - Space Impact.exe
+\\Gerry-pc\d\GitHub\proyek-pv-space-impact\Proyek PV - Space Impact\bin\Debug\Proyek PV - Space Impact.pdb
+\\Gerry-pc\d\GitHub\proyek-pv-space-impact\Proyek PV - Space Impact\obj\Debug\Proyek PV - Space Impact.csprojResolveAssemblyReference.cache
+\\Gerry-pc\d\GitHub\proyek-pv-space-impact\Proyek PV - Space Impact\obj\Debug\Proyek_PV___Space_Impact.IntroForm.resources
+\\Gerry-pc\d\GitHub\proyek-pv-space-impact\Proyek PV - Space Impact\obj\Debug\Proyek_PV___Space_Impact.MenuForm.resources
+\\Gerry-pc\d\GitHub\proyek-pv-space-impact\Proyek PV - Space Impact\obj\Debug\Proyek_PV___Space_Impact.ChoosePlaneForm.resources
+\\Gerry-pc\d\GitHub\proyek-pv-space-impact\Proyek PV - Space Impact\obj\Debug\Proyek_PV___Space_Impact.LoadingForm.resources
+\\Gerry-pc\d\GitHub\proyek-pv-space-impact\Proyek PV - Space Impact\obj\Debug\Proyek_PV___Space_Impact.BattleForm.resources
+\\Gerry-pc\d\GitHub\proyek-pv-space-impact\Proyek PV - Space Impact\obj\Debug\Proyek_PV___Space_Impact.Properties.Resources.resources
+\\Gerry-pc\d\GitHub\proyek-pv-space-impact\Proyek PV - Space Impact\obj\Debug\Proyek PV - Space Impact.csproj.GenerateResource.Cache

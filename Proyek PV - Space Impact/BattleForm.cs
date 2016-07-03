@@ -163,7 +163,7 @@ namespace Proyek_PV___Space_Impact
             {
                 wallTopX[i] -= 20;
             }
-            this.Invalidate();
+            //this.Invalidate();
         }
 
         private void timer2_Tick(object sender, EventArgs e)
@@ -223,7 +223,7 @@ namespace Proyek_PV___Space_Impact
                 bulletArrY.Add(y + 30);
                 bulletArr.Add(true);
             }
-            this.Invalidate();
+            //this.Invalidate();
         }
 
         private void nextLevel()
@@ -295,6 +295,11 @@ namespace Proyek_PV___Space_Impact
                 life2.Visible = false;
                 life3.Visible = false;
             }
+        }
+
+        private void t3Refresh_Tick(object sender, EventArgs e)
+        {
+            this.Invalidate();
         }
     }
 }
