@@ -62,6 +62,7 @@ namespace Proyek_PV___Space_Impact
         private void Form6_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             TextureBrush bt = new TextureBrush(imgGround);
 
             ///////////////////gambar wall
@@ -99,6 +100,7 @@ namespace Proyek_PV___Space_Impact
                     g.DrawImage(imgMusuh2, xMusuh[i], yMusuh[i], 40, 40);
                 }
             }
+            
         }
 
         private void timer1_Tick(object sender, EventArgs e)
