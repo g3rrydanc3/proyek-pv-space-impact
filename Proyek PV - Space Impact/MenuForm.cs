@@ -71,7 +71,8 @@ namespace Proyek_PV___Space_Impact
             }
             else if (rect_cursor.IntersectsWith(menu[1]))
             {
-
+                HighScoreForm f = new HighScoreForm();
+                f.ShowDialog();
             }
             else if (rect_cursor.IntersectsWith(menu[2]))
             {

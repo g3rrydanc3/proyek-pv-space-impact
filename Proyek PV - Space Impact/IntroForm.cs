@@ -36,7 +36,7 @@ namespace Proyek_PV___Space_Impact
         private void timer1_Tick(object sender, EventArgs e)
         {
             timer++;
-            if(timer > 3 && timer < 6)
+            if(timer > 1 && timer < 4)
             {
                 if (splashed == 0)
                 {
@@ -49,7 +49,7 @@ namespace Proyek_PV___Space_Impact
                     this.Invalidate();
                 }
             }
-            else if(timer > 6)
+            else if(timer > 4)
             {
                 Cursor = Cursors.Default;
                 this.Invalidate();

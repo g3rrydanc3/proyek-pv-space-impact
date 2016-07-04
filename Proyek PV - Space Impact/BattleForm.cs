@@ -18,11 +18,13 @@ namespace Proyek_PV___Space_Impact
         }
 
         Random rand = new Random();
-        int waktu, level, life, blink;
+        int waktu, level, life, blink, score;
 
         int x;
         int y;
-        Image imgPlayer;
+        int pesawat;
+        List<Image> imgPesawat = new List<Image>();
+        List<Image> imgPesawatTransparent = new List<Image>();
         Image imgBullet;
         Image imgMusuh1;
         Image imgMusuh2;
@@ -41,14 +43,19 @@ namespace Proyek_PV___Space_Impact
         List<int> yMusuh = new List<int>();
         List<int> jenis = new List<int>();
         private void Form6_Load(object sender, EventArgs e)
-        {            
-            imgPlayer = Image.FromFile("pesawat1.png");
+        {
+            for (int i = 1; i <= 3; i++)
+            {
+                imgPesawat.Add(Image.FromFile("pesawat" + i + ".png"));
+                imgPesawatTransparent.Add(Image.FromFile("pesawat" + i + "Transparent.png"));
+            }
             imgBullet = Image.FromFile("peluru.png");
             imgMusuh1 = Image.FromFile("musuh1.png");
             imgMusuh2 = Image.FromFile("musuh2.png");
             imgGround = Image.FromFile("groundSprite.png");
             this.BackgroundImage = Image.FromFile("backgroundgame.jpg");
 
+            pesawat = 0;
             waktu = 30;
             level = 1;
             life = 3;
@@ -82,13 +89,12 @@ namespace Proyek_PV___Space_Impact
 	        {
 		        if (blink % 2 == 0)
                 {
-                    //to do player transparent
-                    g.DrawImage(imgPlayer, x, y, 80, 80);
+                    g.DrawImage(imgPesawatTransparent[pesawat], x, y, 80, 80);
                 }
 	        }
             else
 	        {
-                g.DrawImage(imgPlayer, x, y, 80, 80);
+                g.DrawImage(imgPesawat[pesawat], x, y, 80, 80);
 	        }
             
             
@@ -136,21 +142,20 @@ namespace Proyek_PV___Space_Impact
                 {
                     if (bulletArrX[j] >= xMusuh[i] && bulletArrX[j] < xMusuh[i] + 40 && bulletArrY[j] >= yMusuh[i] && bulletArrY[j] < yMusuh[i] + 40)
                     {
-                        int nilai = 0;
                         if (jenis[i] == 0)
                         {
-                            nilai = 10;
+                            score += 10;
                         }
                         else if (jenis[i] == 1)
                         {
-                            nilai = 5;
+                            score += 5;
                         }
                         yMusuh[i] = rand.Next(40, 440);
                         xMusuh[i] = rand.Next(700, 900);
                         bulletArrX[j] = -1000;
                         bulletArrY[j] = -1000;
                         bulletArr[j] = false;
-                        label2.Text = (Int32.Parse(label2.Text) + nilai).ToString();
+                        label2.Text = score.ToString();
                     }
                 }
             }
@@ -354,6 +359,10 @@ namespace Proyek_PV___Space_Impact
                 t2Waktu.Enabled = false;
                 t3Refresh.Enabled = false;
                 MessageBox.Show("Game Over");
+                //to do highscore
+                GameOverForm f = new GameOverForm(score);
+                f.ShowDialog();
+                this.Close();
             }
         }
 
