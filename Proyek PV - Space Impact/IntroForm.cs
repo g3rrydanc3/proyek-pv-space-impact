@@ -84,7 +84,7 @@ namespace Proyek_PV___Space_Impact
 
         private void button1_Click(object sender, EventArgs e)
         {
-            BattleForm f = new BattleForm();
+            BattleForm f = new BattleForm(0);
             f.ShowDialog();
         }
     }

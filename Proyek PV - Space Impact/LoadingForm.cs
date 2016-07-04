@@ -65,8 +65,7 @@ namespace Proyek_PV___Space_Impact
             if (progressBar1.Value == 100)
             {
                 timer2.Stop();
-                BattleForm f = new BattleForm();
-                f.ShowDialog();
+                this.Close();
             }
         }
     }

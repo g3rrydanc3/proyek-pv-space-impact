@@ -12,9 +12,10 @@ namespace Proyek_PV___Space_Impact
 {
     public partial class BattleForm : Form
     {
-        public BattleForm()
+        public BattleForm(int pesawatTemp)
         {
             InitializeComponent();
+            pesawat = pesawatTemp;
         }
 
         Random rand = new Random();
@@ -55,7 +56,6 @@ namespace Proyek_PV___Space_Impact
             imgGround = Image.FromFile("groundSprite.png");
             this.BackgroundImage = Image.FromFile("backgroundgame.jpg");
 
-            pesawat = 0;
             waktu = 30;
             level = 1;
             life = 3;

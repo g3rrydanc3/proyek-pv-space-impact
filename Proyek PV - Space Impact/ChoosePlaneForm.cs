@@ -155,6 +155,24 @@ namespace Proyek_PV___Space_Impact
         {
             LoadingForm f = new LoadingForm();
             f.ShowDialog();
+            BattleForm f1 = new BattleForm(0);
+            f1.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            LoadingForm f = new LoadingForm();
+            f.ShowDialog();
+            BattleForm f1 = new BattleForm(1);
+            f1.ShowDialog();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            LoadingForm f = new LoadingForm();
+            f.ShowDialog();
+            BattleForm f1 = new BattleForm(2);
+            f1.ShowDialog();
         }
     }
 }
