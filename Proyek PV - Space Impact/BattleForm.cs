@@ -54,7 +54,7 @@ namespace Proyek_PV___Space_Impact
             imgMusuh1 = Image.FromFile("musuh1.png");
             imgMusuh2 = Image.FromFile("musuh2.png");
             imgGround = Image.FromFile("groundSprite.png");
-            this.BackgroundImage = Image.FromFile("backgroundgame.jpg");
+            //this.BackgroundImage = Image.FromFile("backgroundgame.jpg");
 
             waktu = 30;
             level = 1;
@@ -129,7 +129,7 @@ namespace Proyek_PV___Space_Impact
             {
                 if (xMusuh[i] <= 0)
                 {
-                    yMusuh[i] = rand.Next(40, 440);
+                    yMusuh[i] = rand.Next(50, 440);
                     xMusuh[i] = rand.Next(700, 900);
                 }
                 else
@@ -151,7 +151,7 @@ namespace Proyek_PV___Space_Impact
                         {
                             score += 5;
                         }
-                        yMusuh[i] = rand.Next(40, 440);
+                        yMusuh[i] = rand.Next(50, 440);
                         xMusuh[i] = rand.Next(700, 900);
                         bulletArrX[j] = -1000;
                         bulletArrY[j] = -1000;
