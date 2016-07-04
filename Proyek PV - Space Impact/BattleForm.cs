@@ -213,7 +213,7 @@ namespace Proyek_PV___Space_Impact
                 ////////////////////loop wall top
                 for (int i = 0; i < wallTopHeight.Count(); i++)
                 {
-                    if (wallTopX[i] >= x && wallTopX[i] < x + 80 && 50 >= y && 50 < y + 80)
+                    if (wallTopX[i] >= x && wallTopX[i] < x + 80 && 50 + wallTopHeight[i] >= y && 50 + wallTopHeight[i] < y + 80)
                     {
                         //MessageBox.Show("test");
                         life--;
@@ -293,6 +293,8 @@ namespace Proyek_PV___Space_Impact
             t1Gerak.Enabled = false;
             t2Waktu.Enabled = false;
             MessageBox.Show("Congratulation, You finished level " + (level - 1), "Next Level");
+            x = 30;
+            y = this.Height / 2 - 50;
             t1Gerak.Enabled = true;
             t2Waktu.Enabled = true;
             waktu = level * 25;
