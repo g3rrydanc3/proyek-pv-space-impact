@@ -140,6 +140,7 @@ namespace Proyek_PV___Space_Impact
                 ///////////////////loop bullet
                 for (int j = 0; j < bulletArrX.Count(); j++)
                 {
+                    //check musuh ketembak
                     if (bulletArrX[j] >= xMusuh[i] && bulletArrX[j] < xMusuh[i] + 40 && bulletArrY[j] >= yMusuh[i] && bulletArrY[j] < yMusuh[i] + 40)
                     {
                         if (jenis[i] == 0)
