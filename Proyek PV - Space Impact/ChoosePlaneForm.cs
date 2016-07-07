@@ -23,6 +23,33 @@ namespace Proyek_PV___Space_Impact
         Image pesawat3;
         Image judul;
 
+        protected override void WndProc(ref Message message)
+        {
+            const int WM_SYSCOMMAND = 0x0112;
+            const int SC_MOVE = 0xF010;
+
+            switch (message.Msg)
+            {
+                case WM_SYSCOMMAND:
+                    int command = message.WParam.ToInt32() & 0xfff0;
+                    if (command == SC_MOVE)
+                        return;
+                    break;
+            }
+
+            base.WndProc(ref message);
+        }
+
+        protected override void SetVisibleCore(bool value)
+        {
+            if (!this.IsHandleCreated)
+            {
+                this.CreateHandle();
+                value = true;
+            }
+            base.SetVisibleCore(value);
+        }
+
         private void Form4_Load(object sender, EventArgs e)
         {
             pesawat1 = Image.FromFile("pesawat1.png");
@@ -153,26 +180,46 @@ namespace Proyek_PV___Space_Impact
 
         private void button1_Click(object sender, EventArgs e)
         {
+            SetVisibleCore(false);
             LoadingForm f = new LoadingForm();
             f.ShowDialog();
-            BattleForm f1 = new BattleForm(0);
-            f1.ShowDialog();
+            if (f.finished == true)
+            {
+                BattleForm f1 = new BattleForm(0);
+                f1.ShowDialog();
+                this.Close();
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            SetVisibleCore(false);
             LoadingForm f = new LoadingForm();
             f.ShowDialog();
-            BattleForm f1 = new BattleForm(1);
-            f1.ShowDialog();
+            if (f.finished == true)
+            {
+                BattleForm f1 = new BattleForm(1);
+                f1.ShowDialog();
+                this.Close();
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            SetVisibleCore(false);
             LoadingForm f = new LoadingForm();
             f.ShowDialog();
-            BattleForm f1 = new BattleForm(2);
-            f1.ShowDialog();
+            if (f.finished == true)
+            {
+                BattleForm f1 = new BattleForm(2);
+                f1.ShowDialog();
+                this.Close();
+            }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

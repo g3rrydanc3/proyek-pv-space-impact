@@ -23,6 +23,33 @@ namespace Proyek_PV___Space_Impact
             InitializeComponent();
         }
 
+        protected override void WndProc(ref Message message)
+        {
+            const int WM_SYSCOMMAND = 0x0112;
+            const int SC_MOVE = 0xF010;
+
+            switch (message.Msg)
+            {
+                case WM_SYSCOMMAND:
+                    int command = message.WParam.ToInt32() & 0xfff0;
+                    if (command == SC_MOVE)
+                        return;
+                    break;
+            }
+
+            base.WndProc(ref message);
+        }
+
+        protected override void SetVisibleCore(bool value)
+        {
+            if (!this.IsHandleCreated)
+            {
+                this.CreateHandle();
+                value = true;
+            }
+            base.SetVisibleCore(value);
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             Cursor = Cursors.AppStarting; 
@@ -77,6 +104,7 @@ namespace Proyek_PV___Space_Impact
         {
             if (splashed == 2)
             {
+                SetVisibleCore(false);
                 MenuForm f = new MenuForm();
                 f.ShowDialog();
             }

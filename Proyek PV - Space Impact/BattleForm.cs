@@ -43,6 +43,24 @@ namespace Proyek_PV___Space_Impact
         List<int> xMusuh = new List<int>();
         List<int> yMusuh = new List<int>();
         List<int> jenis = new List<int>();
+
+        protected override void WndProc(ref Message message)
+        {
+            const int WM_SYSCOMMAND = 0x0112;
+            const int SC_MOVE = 0xF010;
+
+            switch (message.Msg)
+            {
+                case WM_SYSCOMMAND:
+                    int command = message.WParam.ToInt32() & 0xfff0;
+                    if (command == SC_MOVE)
+                        return;
+                    break;
+            }
+
+            base.WndProc(ref message);
+        }
+
         private void Form6_Load(object sender, EventArgs e)
         {
             for (int i = 1; i <= 3; i++)
@@ -371,6 +389,24 @@ namespace Proyek_PV___Space_Impact
 
         private void t3Refresh_Tick(object sender, EventArgs e)
         {
+            this.Invalidate();
+        }
+
+        private void BattleForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            t1Gerak.Enabled = false;
+            t2Waktu.Enabled = false;
+            t3Refresh.Enabled = false;
+            bulletArrX.Clear();
+            bulletArrY.Clear();
+            bulletArr.Clear();
+            wallTopX.Clear();
+            wallTopHeight.Clear();
+            wallBotX.Clear();
+            wallBotHeight.Clear();
+            xMusuh.Clear();
+            yMusuh.Clear();
+            jenis.Clear();
             this.Invalidate();
         }
     }

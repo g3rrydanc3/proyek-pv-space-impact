@@ -24,6 +24,33 @@ namespace Proyek_PV___Space_Impact
         Image ufo;
         Rectangle[] menu = new Rectangle[3];
 
+        protected override void WndProc(ref Message message)
+        {
+            const int WM_SYSCOMMAND = 0x0112;
+            const int SC_MOVE = 0xF010;
+
+            switch (message.Msg)
+            {
+                case WM_SYSCOMMAND:
+                    int command = message.WParam.ToInt32() & 0xfff0;
+                    if (command == SC_MOVE)
+                        return;
+                    break;
+            }
+
+            base.WndProc(ref message);
+        }
+
+        protected override void SetVisibleCore(bool value)
+        {
+            if (!this.IsHandleCreated)
+            {
+                this.CreateHandle();
+                value = true;
+            }
+            base.SetVisibleCore(value);
+        }
+
         private void Form3_Load(object sender, EventArgs e)
         {
             this.BackgroundImage = Image.FromFile("background.jpg");
@@ -75,6 +102,14 @@ namespace Proyek_PV___Space_Impact
                 f.ShowDialog();
             }
             else if (rect_cursor.IntersectsWith(menu[2]))
+            {
+                System.Environment.Exit(1);
+            }
+        }
+
+        private void MenuForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
             {
                 System.Environment.Exit(1);
             }

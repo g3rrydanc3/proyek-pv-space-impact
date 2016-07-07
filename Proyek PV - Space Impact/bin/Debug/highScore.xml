@@ -1,6 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <spaceImpact>
   <highScore>
+    <name />
+    <score>0</score>
+  </highScore>
+  <highScore>
     <name>GERRY</name>
     <score>15</score>
   </highScore>

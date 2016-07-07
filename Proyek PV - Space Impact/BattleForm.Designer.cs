@@ -199,10 +199,13 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.DoubleBuffered = true;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "BattleForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form6";
+            this.Text = "Space Impact";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BattleForm_FormClosing);
             this.Load += new System.EventHandler(this.Form6_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form6_Paint);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BattleForm_KeyDown);
