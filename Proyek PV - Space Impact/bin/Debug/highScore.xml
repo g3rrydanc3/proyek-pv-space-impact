@@ -1,19 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <spaceImpact>
   <highScore>
-    <name />
-    <score>0</score>
-  </highScore>
-  <highScore>
     <name>GERRY</name>
     <score>15</score>
   </highScore>
   <highScore>
-    <name>ASDFERE</name>
-    <score>5</score>
-  </highScore>
-  <highScore>
     <name>QAWER</name>
     <score>15</score>
+  </highScore>
+  <highScore>
+    <name>ASDFFF</name>
+    <score>10</score>
+  </highScore>
+  <highScore>
+    <name>DS</name>
+    <score>10</score>
+  </highScore>
+  <highScore>
+    <name>sd</name>
+    <score>10</score>
   </highScore>
 </spaceImpact>

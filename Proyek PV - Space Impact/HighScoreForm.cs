@@ -18,8 +18,13 @@ namespace Proyek_PV___Space_Impact
         {
             InitializeComponent();
         }
-        List<string> name = new List<string>();
-        List<string> score = new List<string>();
+
+        class CHighScore
+        {
+            public string name { get; set; }
+            public int score { get; set; }
+        }
+        List<CHighScore> highScore = new List<CHighScore>();
 
         protected override void WndProc(ref Message message)
         {
@@ -47,12 +52,36 @@ namespace Proyek_PV___Space_Impact
                 while (reader.IsStartElement("highScore"))
                 {
                     reader.ReadStartElement();
-                    name.Add(reader.ReadElementString("name"));
-                    score.Add(reader.ReadElementString("score"));
+                    CHighScore data = new CHighScore();
+                    data.name = reader.ReadElementString("name");
+                    data.score = Convert.ToInt32(reader.ReadElementString("score"));
+                    highScore.Add(data);
                     reader.ReadEndElement();
                 }
                 reader.ReadEndElement();
                 reader.Close();
+                var orderedResult = highScore.OrderByDescending(f => f.score).ToList();
+
+                Label[] lName = new Label[highScore.Count()];
+                Label[] lScore = new Label[highScore.Count()];
+                for (int i = 0; i < highScore.Count(); i++)
+                {
+                    lName[i] = new Label();
+                    lName[i].Text = orderedResult[i].name;
+                    lName[i].ForeColor = Color.White;
+                    lName[i].TextAlign = ContentAlignment.TopCenter;
+                    lName[i].AutoSize = true;
+                    lName[i].Location = new Point(170, i * 50);
+                    panel1.Controls.Add(lName[i]);
+
+                    lScore[i] = new Label();
+                    lScore[i].Text = orderedResult[i].score.ToString();
+                    lScore[i].ForeColor = Color.White;
+                    lScore[i].TextAlign = ContentAlignment.TopCenter;
+                    lScore[i].AutoSize = true;
+                    lScore[i].Location = new Point(560, i * 50);
+                    panel1.Controls.Add(lScore[i]);
+                }
             }
         }
 

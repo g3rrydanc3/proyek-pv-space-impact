@@ -158,9 +158,10 @@ namespace Proyek_PV___Space_Impact
                 ///////////////////loop bullet
                 for (int j = 0; j < bulletArrX.Count(); j++)
                 {
-                    //check musuh ketembak
+                    ///////////////////check musuh ketembak
                     if (bulletArrX[j] >= xMusuh[i] && bulletArrX[j] < xMusuh[i] + 40 && bulletArrY[j] >= yMusuh[i] && bulletArrY[j] < yMusuh[i] + 40)
                     {
+                        //todo sound
                         if (jenis[i] == 0)
                         {
                             score += 10;
@@ -209,6 +210,7 @@ namespace Proyek_PV___Space_Impact
                     ////////////////////check nabrak musuh & player
                     if (xMusuh[i] >= x && xMusuh[i] < x + 80 && yMusuh[i] >= y && yMusuh[i] < y + 80)
                     {
+                        //todo sound
                         life--;
                         refreshLife();
                         x = 0;
@@ -221,7 +223,7 @@ namespace Proyek_PV___Space_Impact
                 {
                     if (wallBotX[i] >= x && wallBotX[i] < x + 80 && 540 - wallBotHeight[i] >= y && 540 - wallBotHeight[i] < y + 80)
                     {
-                        //MessageBox.Show("test");
+                        //todo sound
                         life--;
                         refreshLife();
                         x = 0;
@@ -234,7 +236,7 @@ namespace Proyek_PV___Space_Impact
                 {
                     if (wallTopX[i] >= x && wallTopX[i] < x + 80 && 50 + wallTopHeight[i] >= y && 50 + wallTopHeight[i] < y + 80)
                     {
-                        //MessageBox.Show("test");
+                        //todo sound
                         life--;
                         refreshLife();
                         x = 0;
@@ -243,7 +245,6 @@ namespace Proyek_PV___Space_Impact
                     }
                 }
             }
-            //this.Invalidate();
         }
 
         private void timer2_Tick(object sender, EventArgs e)
@@ -262,6 +263,14 @@ namespace Proyek_PV___Space_Impact
                 if (waktu <= 0)
                 {
                     nextLevel();
+                }
+            }
+            else if (level == 3)
+            {
+                if (waktu <= 0)
+                {
+                    life = 0;
+                    refreshLife();
                 }
             }
         }
@@ -299,6 +308,7 @@ namespace Proyek_PV___Space_Impact
             }
             if (e.KeyCode == Keys.Space)
             {
+                //todo sound
                 bulletArrX.Add(x + 80);
                 bulletArrY.Add(y + 30);
                 bulletArr.Add(true);
@@ -316,20 +326,44 @@ namespace Proyek_PV___Space_Impact
             y = this.Height / 2 - 50;
             t1Gerak.Enabled = true;
             t2Waktu.Enabled = true;
-            waktu = level * 25;
-            label5.Text = level.ToString();
-            label3.Text = waktu.ToString();
-            bulletArr.Clear();
-            bulletArrX.Clear();
-            bulletArrY.Clear();
-            xMusuh.Clear();
-            yMusuh.Clear();
-            jenis.Clear();
-            wallBotHeight.Clear();
-            wallBotX.Clear();
-            wallTopHeight.Clear();
-            wallTopX.Clear();
-            newRandom();
+            
+            if (level == 2)
+            {
+                //todo big enemy
+                waktu = level * 25;
+                label5.Text = level.ToString();
+                label3.Text = waktu.ToString();
+                bulletArr.Clear();
+                bulletArrX.Clear();
+                bulletArrY.Clear();
+                xMusuh.Clear();
+                yMusuh.Clear();
+                jenis.Clear();
+                wallBotHeight.Clear();
+                wallBotX.Clear();
+                wallTopHeight.Clear();
+                wallTopX.Clear();
+                newRandom();
+            }
+            else if(level == 3)
+            {
+                //todo boss
+                waktu = level * 25;
+                label5.Text = level.ToString();
+                label3.Text = waktu.ToString();
+                bulletArr.Clear();
+                bulletArrX.Clear();
+                bulletArrY.Clear();
+                xMusuh.Clear();
+                yMusuh.Clear();
+                jenis.Clear();
+                wallBotHeight.Clear();
+                wallBotX.Clear();
+                wallTopHeight.Clear();
+                wallTopX.Clear();
+                newRandom();
+            }
+            
         }
 
         private void newRandom()
@@ -379,10 +413,13 @@ namespace Proyek_PV___Space_Impact
                 t1Gerak.Enabled = false;
                 t2Waktu.Enabled = false;
                 t3Refresh.Enabled = false;
-                MessageBox.Show("Game Over");
-                //to do highscore
+
+                ///////////////////highscore
                 GameOverForm f = new GameOverForm(score);
-                f.ShowDialog();
+                if (f.ShowDialog() == DialogResult.No)
+                {
+                    MessageBox.Show("Game Over");
+                }
                 this.Close();
             }
         }

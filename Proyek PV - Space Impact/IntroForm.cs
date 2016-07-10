@@ -83,8 +83,8 @@ namespace Proyek_PV___Space_Impact
                 splashed = 2;
                 timer1.Stop();
                 Label label = new Label();
-                label.Text = "Press any key to continue...";
-                label.Size = new Size(500, 70);
+                label.Text = "Press any key or click to continue...";
+                label.Size = new Size(826, 70);
                 label.Font = new Font("Century gothic", 18, FontStyle.Bold);
                 label.Location = new Point(0, 500);
                 label.ForeColor = Color.White;
@@ -114,6 +114,25 @@ namespace Proyek_PV___Space_Impact
         {
             BattleForm f = new BattleForm(0);
             f.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            GameOverForm f = new GameOverForm(2);
+            if (f.ShowDialog() == DialogResult.No)
+            {
+                MessageBox.Show("Game Over");
+            }
+        }
+
+        private void PencetMouse(object sender, MouseEventArgs e)
+        {
+            if (splashed == 2)
+            {
+                SetVisibleCore(false);
+                MenuForm f = new MenuForm();
+                f.ShowDialog();
+            }
         }
     }
 }
