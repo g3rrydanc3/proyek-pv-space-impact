@@ -7,6 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Media;
+using NAudio;
+using NAudio.Wave;
 
 namespace Proyek_PV___Space_Impact
 {
@@ -59,6 +63,13 @@ namespace Proyek_PV___Space_Impact
             world = Image.FromFile("world.gif");
             planet = Image.FromFile("planet.png");
             ufo = Image.FromFile("ufo.png");
+
+            IWavePlayer waveOutDevice;
+            AudioFileReader audioFileReader;
+            waveOutDevice = new WaveOut();
+            audioFileReader = new AudioFileReader(Application.StartupPath + "/sfx/menu_bgm.mp3");
+            waveOutDevice.Init(audioFileReader);
+            waveOutDevice.Play();
         }
 
         private void Form3_Paint(object sender, PaintEventArgs e)
