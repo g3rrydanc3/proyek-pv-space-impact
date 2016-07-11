@@ -65,13 +65,13 @@ namespace Proyek_PV___Space_Impact
         {
             for (int i = 1; i <= 3; i++)
             {
-                imgPesawat.Add(Image.FromFile("pesawat" + i + ".png"));
-                imgPesawatTransparent.Add(Image.FromFile("pesawat" + i + "Transparent.png"));
+                imgPesawat.Add(Image.FromFile(Application.StartupPath + "/asset/pesawat" + i + ".png"));
+                imgPesawatTransparent.Add(Image.FromFile(Application.StartupPath + "/asset/pesawat" + i + "Transparent.png"));
             }
-            imgBullet = Image.FromFile("peluru.png");
-            imgMusuh1 = Image.FromFile("musuh1.png");
-            imgMusuh2 = Image.FromFile("musuh2.png");
-            imgGround = Image.FromFile("groundSprite.png");
+            imgBullet = Image.FromFile(Application.StartupPath + "/asset/peluru.png");
+            imgMusuh1 = Image.FromFile(Application.StartupPath + "/asset/musuh1.png");
+            imgMusuh2 = Image.FromFile(Application.StartupPath + "/asset/musuh2.png");
+            imgGround = Image.FromFile(Application.StartupPath + "/asset/groundSprite.png");
             //this.BackgroundImage = Image.FromFile("backgroundgame.jpg");
 
             waktu = 30;

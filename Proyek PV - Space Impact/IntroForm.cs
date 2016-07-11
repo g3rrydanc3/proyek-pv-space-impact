@@ -52,11 +52,11 @@ namespace Proyek_PV___Space_Impact
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Cursor = Cursors.AppStarting; 
-            pictureBox1.BackgroundImage = Image.FromFile("background1.jpg");
+            Cursor = Cursors.AppStarting;
+            pictureBox1.BackgroundImage = Image.FromFile(Application.StartupPath + "/asset/background1.jpg");
             pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
-            logo1 = Image.FromFile("logo1.png");
-            roketluncur = Image.FromFile("roketluncur.png");
+            logo1 = Image.FromFile(Application.StartupPath + "/asset/logo1.png");
+            roketluncur = Image.FromFile(Application.StartupPath + "/asset/roketluncur.png");
             timer1.Start();
         }
 
@@ -72,7 +72,7 @@ namespace Proyek_PV___Space_Impact
                 else
                 {
                     this.Controls.Remove(pictureBox1);
-                    this.BackgroundImage = Image.FromFile("background2.jpg");
+                    this.BackgroundImage = Image.FromFile(Application.StartupPath + "/asset/background2.jpg");
                     this.Invalidate();
                 }
             }

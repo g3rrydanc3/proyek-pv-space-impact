@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Media;
+using System.Reflection;
 using NAudio;
 using NAudio.Wave;
 
@@ -18,6 +19,18 @@ namespace Proyek_PV___Space_Impact
     {
         public MenuForm()
         {
+            AppDomain.CurrentDomain.AssemblyResolve += (sender, args) =>
+            {
+                string resourceName = new AssemblyName(args.Name).Name + ".dll";
+                string resource = Array.Find(this.GetType().Assembly.GetManifestResourceNames(), element => element.EndsWith(resourceName));
+
+                using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resource))
+                {
+                    Byte[] assemblyData = new Byte[stream.Length];
+                    stream.Read(assemblyData, 0, assemblyData.Length);
+                    return Assembly.Load(assemblyData);
+                }
+            };
             InitializeComponent();
         }
 
@@ -27,6 +40,9 @@ namespace Proyek_PV___Space_Impact
         Image planet;
         Image ufo;
         Rectangle[] menu = new Rectangle[3];
+
+        IWavePlayer waveOutDevice;
+        AudioFileReader audioFileReader;
 
         protected override void WndProc(ref Message message)
         {
@@ -57,15 +73,13 @@ namespace Proyek_PV___Space_Impact
 
         private void Form3_Load(object sender, EventArgs e)
         {
-            this.BackgroundImage = Image.FromFile("background.jpg");
-            roket = Image.FromFile("roket.png");
-            judul = Image.FromFile("judul.png");
-            world = Image.FromFile("world.gif");
-            planet = Image.FromFile("planet.png");
-            ufo = Image.FromFile("ufo.png");
+            this.BackgroundImage = Image.FromFile(Application.StartupPath + "/asset/background.jpg");
+            roket = Image.FromFile(Application.StartupPath + "/asset/roket.png");
+            judul = Image.FromFile(Application.StartupPath + "/asset/judul.png");
+            world = Image.FromFile(Application.StartupPath + "/asset/world.gif");
+            planet = Image.FromFile(Application.StartupPath + "/asset/planet.png");
+            ufo = Image.FromFile(Application.StartupPath + "/asset/ufo.png");
 
-            IWavePlayer waveOutDevice;
-            AudioFileReader audioFileReader;
             waveOutDevice = new WaveOut();
             audioFileReader = new AudioFileReader(Application.StartupPath + "/sfx/menu_bgm.mp3");
             waveOutDevice.Init(audioFileReader);
@@ -114,15 +128,35 @@ namespace Proyek_PV___Space_Impact
             }
             else if (rect_cursor.IntersectsWith(menu[2]))
             {
+                CloseWaveOut();
                 System.Environment.Exit(1);
             }
         }
 
         private void MenuForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            CloseWaveOut();
             if (e.CloseReason == CloseReason.UserClosing)
             {
                 System.Environment.Exit(1);
+            }
+        }
+
+        private void CloseWaveOut()
+        {
+            if (waveOutDevice != null)
+            {
+                waveOutDevice.Stop();
+            }
+            if (audioFileReader != null)
+            {
+                audioFileReader.Dispose();
+                audioFileReader = null;
+            }
+            if (waveOutDevice != null)
+            {
+                waveOutDevice.Dispose();
+                waveOutDevice = null;
             }
         }
     }

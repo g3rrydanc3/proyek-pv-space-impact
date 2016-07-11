@@ -52,10 +52,10 @@ namespace Proyek_PV___Space_Impact
 
         private void Form4_Load(object sender, EventArgs e)
         {
-            pesawat1 = Image.FromFile("pesawat1.png");
-            pesawat2 = Image.FromFile("pesawat2.png");
-            pesawat3 = Image.FromFile("pesawat3.png");
-            judul = Image.FromFile("judulform4.png");
+            pesawat1 = Image.FromFile(Application.StartupPath + "/asset/pesawat1.png");
+            pesawat2 = Image.FromFile(Application.StartupPath + "/asset/pesawat2.png");
+            pesawat3 = Image.FromFile(Application.StartupPath + "/asset/pesawat3.png");
+            judul = Image.FromFile(Application.StartupPath + "/asset/judulform4.png");
             Label label1 = new Label();
             label1.Text = "Speed     : ";
             label1.Size = new Size(100, 20);
