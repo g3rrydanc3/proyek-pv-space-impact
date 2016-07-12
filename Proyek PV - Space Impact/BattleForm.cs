@@ -1,4 +1,11 @@
-﻿using System;
+﻿//TODO
+//BOSS 10x tembak
+//Musuh3 2x tembak
+//hitbox boss(?)
+
+//BUG
+//life 2 not play sound
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +14,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
 
 namespace Proyek_PV___Space_Impact
 {
@@ -26,9 +34,12 @@ namespace Proyek_PV___Space_Impact
         int pesawat;
         List<Image> imgPesawat = new List<Image>();
         List<Image> imgPesawatTransparent = new List<Image>();
-        Image imgBullet;
         Image imgMusuh1;
         Image imgMusuh2;
+        Image imgMusuh3;
+        Image imgBoss;
+
+        Image imgBullet;
         Image imgGround;
         List<int> bulletArrX = new List<int>();
         List<int> bulletArrY = new List<int>();
@@ -42,7 +53,13 @@ namespace Proyek_PV___Space_Impact
 
         List<int> xMusuh = new List<int>();
         List<int> yMusuh = new List<int>();
-        List<int> jenis = new List<int>();
+        List<int> jenisMusuh = new List<int>();
+
+        SoundPlayer boss_die = new SoundPlayer(Application.StartupPath + "/sfx/boss_die.wav");
+        SoundPlayer enemy_die = new SoundPlayer(Application.StartupPath + "/sfx/enemy_die.wav");
+        SoundPlayer low_life = new SoundPlayer(Application.StartupPath + "/sfx/low_life.wav");
+        SoundPlayer player_die = new SoundPlayer(Application.StartupPath + "/sfx/player_die.wav");
+        SoundPlayer shot = new SoundPlayer(Application.StartupPath + "/sfx/shot.wav");
 
         protected override void WndProc(ref Message message)
         {
@@ -71,10 +88,12 @@ namespace Proyek_PV___Space_Impact
             imgBullet = Image.FromFile(Application.StartupPath + "/asset/peluru.png");
             imgMusuh1 = Image.FromFile(Application.StartupPath + "/asset/musuh1.png");
             imgMusuh2 = Image.FromFile(Application.StartupPath + "/asset/musuh2.png");
+            imgMusuh3 = Image.FromFile(Application.StartupPath + "/asset/musuh3.png");
+            imgBoss = Image.FromFile(Application.StartupPath + "/asset/boss.png");
             imgGround = Image.FromFile(Application.StartupPath + "/asset/groundSprite.png");
             //this.BackgroundImage = Image.FromFile("backgroundgame.jpg");
 
-            waktu = 30;
+            waktu = 5;
             level = 1;
             life = 3;
             blink = 10;
@@ -128,16 +147,23 @@ namespace Proyek_PV___Space_Impact
             ///////////////////gambar musuh
             for (int i = 0; i < xMusuh.Count(); i++)
             {
-                if (jenis[i] == 0)
+                if (jenisMusuh[i] == 0)
                 {
                     g.DrawImage(imgMusuh1, xMusuh[i], yMusuh[i], 40, 40);
                 }
-                else if (jenis[i] == 1)
+                else if (jenisMusuh[i] == 1)
                 {
                     g.DrawImage(imgMusuh2, xMusuh[i], yMusuh[i], 40, 40);
                 }
+                else if(jenisMusuh[i] == 2)
+                {
+                    g.DrawImage(imgMusuh3, xMusuh[i], yMusuh[i], 40, 40);
+                }
+                else if (jenisMusuh[i] == 3)
+                {
+                    g.DrawImage(imgBoss, xMusuh[i], yMusuh[i], 200, 246);
+                }
             }
-            
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -161,14 +187,18 @@ namespace Proyek_PV___Space_Impact
                     ///////////////////check musuh ketembak
                     if (bulletArrX[j] >= xMusuh[i] && bulletArrX[j] < xMusuh[i] + 40 && bulletArrY[j] >= yMusuh[i] && bulletArrY[j] < yMusuh[i] + 40)
                     {
-                        //todo sound
-                        if (jenis[i] == 0)
+                        enemy_die.Play();
+                        if (jenisMusuh[i] == 0)
+                        {
+                            score += 5;
+                        }
+                        else if (jenisMusuh[i] == 1)
                         {
                             score += 10;
                         }
-                        else if (jenis[i] == 1)
+                        else if (jenisMusuh[i] == 2)
                         {
-                            score += 5;
+                            score += 15;
                         }
                         yMusuh[i] = rand.Next(50, 440);
                         xMusuh[i] = rand.Next(700, 900);
@@ -210,7 +240,7 @@ namespace Proyek_PV___Space_Impact
                     ////////////////////check nabrak musuh & player
                     if (xMusuh[i] >= x && xMusuh[i] < x + 80 && yMusuh[i] >= y && yMusuh[i] < y + 80)
                     {
-                        //todo sound
+                        player_die.Play();
                         life--;
                         refreshLife();
                         x = 0;
@@ -223,7 +253,7 @@ namespace Proyek_PV___Space_Impact
                 {
                     if (wallBotX[i] >= x && wallBotX[i] < x + 80 && 540 - wallBotHeight[i] >= y && 540 - wallBotHeight[i] < y + 80)
                     {
-                        //todo sound
+                        player_die.Play();
                         life--;
                         refreshLife();
                         x = 0;
@@ -236,7 +266,7 @@ namespace Proyek_PV___Space_Impact
                 {
                     if (wallTopX[i] >= x && wallTopX[i] < x + 80 && 50 + wallTopHeight[i] >= y && 50 + wallTopHeight[i] < y + 80)
                     {
-                        //todo sound
+                        player_die.Play();
                         life--;
                         refreshLife();
                         x = 0;
@@ -308,10 +338,10 @@ namespace Proyek_PV___Space_Impact
             }
             if (e.KeyCode == Keys.Space)
             {
-                //todo sound
                 bulletArrX.Add(x + 80);
                 bulletArrY.Add(y + 30);
                 bulletArr.Add(true);
+                shot.Play();
             }
             //this.Invalidate();
         }
@@ -329,8 +359,8 @@ namespace Proyek_PV___Space_Impact
             
             if (level == 2)
             {
-                //todo big enemy
-                waktu = level * 25;
+  
+                waktu = 5;
                 label5.Text = level.ToString();
                 label3.Text = waktu.ToString();
                 bulletArr.Clear();
@@ -338,7 +368,7 @@ namespace Proyek_PV___Space_Impact
                 bulletArrY.Clear();
                 xMusuh.Clear();
                 yMusuh.Clear();
-                jenis.Clear();
+                jenisMusuh.Clear();
                 wallBotHeight.Clear();
                 wallBotX.Clear();
                 wallTopHeight.Clear();
@@ -347,8 +377,7 @@ namespace Proyek_PV___Space_Impact
             }
             else if(level == 3)
             {
-                //todo boss
-                waktu = level * 25;
+                waktu = 10;
                 label5.Text = level.ToString();
                 label3.Text = waktu.ToString();
                 bulletArr.Clear();
@@ -356,7 +385,7 @@ namespace Proyek_PV___Space_Impact
                 bulletArrY.Clear();
                 xMusuh.Clear();
                 yMusuh.Clear();
-                jenis.Clear();
+                jenisMusuh.Clear();
                 wallBotHeight.Clear();
                 wallBotX.Clear();
                 wallTopHeight.Clear();
@@ -369,17 +398,38 @@ namespace Proyek_PV___Space_Impact
         private void newRandom()
         {
             ///////////////////random wall
-            for (int i = 0; i < 30; i++)
+            if (level != 3)
             {
-                wallBotX.Add(rand.Next(i * 400, i * 500));
-                wallBotHeight.Add(rand.Next(0, 4) * 50);
-                wallTopX.Add(rand.Next(i * 300, i * 400));
-                wallTopHeight.Add(rand.Next(0, 4) * 50);
+                for (int i = 0; i < 30; i++)
+                {
+                    wallBotX.Add(rand.Next(i * 400, i * 500));
+                    wallBotHeight.Add(rand.Next(0, 4) * 50);
+                    wallTopX.Add(rand.Next(i * 300, i * 400));
+                    wallTopHeight.Add(rand.Next(0, 4) * 50);
+                }
             }
             ///////////////////random musuh
-            for (int i = 0; i < 5; i++)
+            if (level == 1)
             {
-                jenis.Add(rand.Next(0, 2));
+                for (int i = 0; i < 5; i++)
+                {
+                    jenisMusuh.Add(rand.Next(0, 2));
+                    xMusuh.Add(rand.Next(600, 1200));
+                    yMusuh.Add(rand.Next(50, 425));
+                }
+            }
+            else if (level == 2)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    jenisMusuh.Add(rand.Next(0, 3));
+                    xMusuh.Add(rand.Next(600, 1200));
+                    yMusuh.Add(rand.Next(50, 425));
+                }
+            }
+            else if (level == 3)
+            {
+                jenisMusuh.Add(3);
                 xMusuh.Add(rand.Next(600, 1200));
                 yMusuh.Add(rand.Next(50, 425));
             }
@@ -401,6 +451,7 @@ namespace Proyek_PV___Space_Impact
             }
             else if (life == 1)
             {
+                low_life.PlayLooping();
                 life1.Visible = true;
                 life2.Visible = false;
                 life3.Visible = false;
@@ -413,6 +464,7 @@ namespace Proyek_PV___Space_Impact
                 t1Gerak.Enabled = false;
                 t2Waktu.Enabled = false;
                 t3Refresh.Enabled = false;
+                player_die.Play();
 
                 ///////////////////highscore
                 GameOverForm f = new GameOverForm(score);
@@ -443,7 +495,7 @@ namespace Proyek_PV___Space_Impact
             wallBotHeight.Clear();
             xMusuh.Clear();
             yMusuh.Clear();
-            jenis.Clear();
+            jenisMusuh.Clear();
             this.Invalidate();
         }
     }
