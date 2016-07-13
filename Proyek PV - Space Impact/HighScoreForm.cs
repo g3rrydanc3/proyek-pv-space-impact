@@ -26,23 +26,6 @@ namespace Proyek_PV___Space_Impact
         }
         List<CHighScore> highScore = new List<CHighScore>();
 
-        protected override void WndProc(ref Message message)
-        {
-            const int WM_SYSCOMMAND = 0x0112;
-            const int SC_MOVE = 0xF010;
-
-            switch (message.Msg)
-            {
-                case WM_SYSCOMMAND:
-                    int command = message.WParam.ToInt32() & 0xfff0;
-                    if (command == SC_MOVE)
-                        return;
-                    break;
-            }
-
-            base.WndProc(ref message);
-        }
-
         private void HighScoreForm_Load(object sender, EventArgs e)
         {
             if (File.Exists(Application.StartupPath + "/highScore.xml"))
@@ -71,7 +54,7 @@ namespace Proyek_PV___Space_Impact
                     lName[i].ForeColor = Color.White;
                     lName[i].TextAlign = ContentAlignment.TopCenter;
                     lName[i].AutoSize = true;
-                    lName[i].Location = new Point(170, i * 50);
+                    lName[i].Location = new Point(170, i * 70);
                     panel1.Controls.Add(lName[i]);
 
                     lScore[i] = new Label();
@@ -79,7 +62,7 @@ namespace Proyek_PV___Space_Impact
                     lScore[i].ForeColor = Color.White;
                     lScore[i].TextAlign = ContentAlignment.TopCenter;
                     lScore[i].AutoSize = true;
-                    lScore[i].Location = new Point(560, i * 50);
+                    lScore[i].Location = new Point(560, i * 70);
                     panel1.Controls.Add(lScore[i]);
                 }
             }
@@ -88,6 +71,16 @@ namespace Proyek_PV___Space_Impact
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void _MouseEnter(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Hand;
+        }
+
+        private void _MouseLeave(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Arrow;
         }
     }
 }

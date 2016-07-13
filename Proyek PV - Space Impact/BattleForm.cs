@@ -62,23 +62,6 @@ namespace Proyek_PV___Space_Impact
         SoundPlayer player_die = new SoundPlayer(Application.StartupPath + "/sfx/player_die.wav");
         SoundPlayer shot = new SoundPlayer(Application.StartupPath + "/sfx/shot.wav");
 
-        protected override void WndProc(ref Message message)
-        {
-            const int WM_SYSCOMMAND = 0x0112;
-            const int SC_MOVE = 0xF010;
-
-            switch (message.Msg)
-            {
-                case WM_SYSCOMMAND:
-                    int command = message.WParam.ToInt32() & 0xfff0;
-                    if (command == SC_MOVE)
-                        return;
-                    break;
-            }
-
-            base.WndProc(ref message);
-        }
-
         private void playerDie()
         {
             player_die.Play();
@@ -101,7 +84,7 @@ namespace Proyek_PV___Space_Impact
             t2Waktu.Enabled = true;
             if (level == 2)
             {
-                waktu = waktuLevel[level];
+                waktu = waktuLevel[level-1];
                 label5.Text = level.ToString();
                 label3.Text = waktu.ToString();
                 bulletArr.Clear();
@@ -118,7 +101,7 @@ namespace Proyek_PV___Space_Impact
             }
             else if (level == 3)
             {
-                waktu = waktuLevel[level];
+                waktu = waktuLevel[level-1];
                 label5.Text = level.ToString();
                 label3.Text = waktu.ToString();
                 bulletArr.Clear();
@@ -233,17 +216,17 @@ namespace Proyek_PV___Space_Impact
             imgGround = Image.FromFile(Application.StartupPath + "/asset/groundSprite.png");
 
             ///////////////////waktu level setting
-            waktuLevel.Add(10);
+            waktuLevel.Add(20);
             waktuLevel.Add(10);
             waktuLevel.Add(10);
 
             ///////////////////initital
-            newRandom();
             level = 1;
             life = 3;
             blink = 10;
-            waktu = waktuLevel[level];
+            waktu = waktuLevel[level-1];
             label3.Text = waktu.ToString();
+            newRandom();
 
             ///////////////////start position
             x = 30;
@@ -496,6 +479,16 @@ namespace Proyek_PV___Space_Impact
             xMusuh.Clear();
             yMusuh.Clear();
             jenisMusuh.Clear();
+            boss_die.Dispose();
+            enemy_die.Dispose();
+            low_life.Dispose();
+            player_die.Dispose();
+            shot.Dispose();
+            boss_die.Stop();
+            enemy_die.Stop();
+            low_life.Stop();
+            player_die.Stop();
+            shot.Stop();
             this.Invalidate();
         }
     }

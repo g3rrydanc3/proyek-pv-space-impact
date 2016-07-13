@@ -175,6 +175,10 @@
     <EmbeddedResource Include="bin\Debug\NAudio.dll" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="bin\Debug\asset\pesawat1.png" />
+    <None Include="bin\Debug\asset\pesawat2.png" />
+    <None Include="bin\Debug\asset\pesawat3.png" />
+    <None Include="bin\Debug\asset\judulform4.png" />
     <Content Include="favicon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

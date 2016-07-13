@@ -179,7 +179,7 @@
             // t3Refresh
             // 
             this.t3Refresh.Enabled = true;
-            this.t3Refresh.Interval = 1;
+            this.t3Refresh.Interval = 10;
             this.t3Refresh.Tick += new System.EventHandler(this.t3Refresh_Tick);
             // 
             // BattleForm
