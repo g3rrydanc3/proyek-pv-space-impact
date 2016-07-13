@@ -205,15 +205,15 @@ namespace Proyek_PV___Space_Impact
             ///////////////////load image
             for (int i = 1; i <= 3; i++)
             {
-                imgPesawat.Add(Image.FromFile(Application.StartupPath + "/asset/pesawat" + i + ".png"));
-                imgPesawatTransparent.Add(Image.FromFile(Application.StartupPath + "/asset/pesawat" + i + "Transparent.png"));
+                imgPesawat.Add(Image.FromFile(Application.StartupPath + "/asset/battle/pesawat" + i + ".png"));
+                imgPesawatTransparent.Add(Image.FromFile(Application.StartupPath + "/asset/battle/pesawat" + i + "Transparent.png"));
             }
-            imgBullet = Image.FromFile(Application.StartupPath + "/asset/peluru.png");
-            imgMusuh1 = Image.FromFile(Application.StartupPath + "/asset/musuh1.png");
-            imgMusuh2 = Image.FromFile(Application.StartupPath + "/asset/musuh2.png");
-            imgMusuh3 = Image.FromFile(Application.StartupPath + "/asset/musuh3.png");
-            imgBoss = Image.FromFile(Application.StartupPath + "/asset/boss.png");
-            imgGround = Image.FromFile(Application.StartupPath + "/asset/groundSprite.png");
+            imgBullet = Image.FromFile(Application.StartupPath + "/asset/battle/peluru.png");
+            imgMusuh1 = Image.FromFile(Application.StartupPath + "/asset/battle/musuh1.png");
+            imgMusuh2 = Image.FromFile(Application.StartupPath + "/asset/battle/musuh2.png");
+            imgMusuh3 = Image.FromFile(Application.StartupPath + "/asset/battle/musuh3.png");
+            imgBoss = Image.FromFile(Application.StartupPath + "/asset/battle/boss.png");
+            imgGround = Image.FromFile(Application.StartupPath + "/asset/battle/groundSprite.png");
 
             ///////////////////waktu level setting
             waktuLevel.Add(20);
