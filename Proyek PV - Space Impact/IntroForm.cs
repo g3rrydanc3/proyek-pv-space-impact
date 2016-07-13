@@ -116,15 +116,6 @@ namespace Proyek_PV___Space_Impact
             f.ShowDialog();
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            GameOverForm f = new GameOverForm(2);
-            if (f.ShowDialog() == DialogResult.No)
-            {
-                MessageBox.Show("Game Over");
-            }
-        }
-
         private void PencetMouse(object sender, MouseEventArgs e)
         {
             if (splashed == 2)
