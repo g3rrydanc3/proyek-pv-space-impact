@@ -2,8 +2,6 @@
 //BOSS 10x tembak
 //Musuh3 2x tembak
 //hitbox boss(?)
-
-//BUG
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
