@@ -1,8 +1,4 @@
-﻿//TODO
-//BOSS 10x tembak
-//Musuh3 2x tembak
-//hitbox boss(?)
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -227,8 +223,8 @@ namespace Proyek_PV___Space_Impact
             imgGround = Image.FromFile(Application.StartupPath + "/asset/battle/groundSprite.png");
 
             ///////////////////waktu level setting
-            waktuLevel.Add(2);
-            waktuLevel.Add(2);
+            waktuLevel.Add(20);
+            waktuLevel.Add(25);
             waktuLevel.Add(30);
 
             ///////////////////initital
@@ -335,7 +331,7 @@ namespace Proyek_PV___Space_Impact
                             nyawaMusuh[i]--;
                             if (nyawaMusuh[i] == 0)
                             {
-                                score += 1000;
+                                score += 100;
                                 boss_die.Play();
                                 life = 0;
                                 refreshLife();
@@ -530,6 +526,26 @@ namespace Proyek_PV___Space_Impact
             player_die.Stop();
             shot.Stop();
             this.Invalidate();
+        }
+
+        private void BattleForm_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.X - 40 > 30 && e.X - 40 < 740)
+            {
+                x = e.X - 40;
+            }
+            if (e.Y - 40 > 50 && e.Y - 40 < 470)
+            {
+                y = e.Y - 40;
+            }
+        }
+
+        private void BattleForm_MouseDown(object sender, MouseEventArgs e)
+        {
+            bulletArrX.Add(x + 80);
+            bulletArrY.Add(y + 30);
+            bulletArr.Add(true);
+            shot.Play();
         }
     }
 }
