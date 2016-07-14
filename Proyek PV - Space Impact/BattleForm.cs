@@ -4,7 +4,6 @@
 //hitbox boss(?)
 
 //BUG
-//life 2 not play sound
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -64,7 +63,6 @@ namespace Proyek_PV___Space_Impact
 
         private void playerDie()
         {
-            player_die.Play();
             life--;
             refreshLife();
             x = 30;
@@ -172,6 +170,7 @@ namespace Proyek_PV___Space_Impact
                 life1.Visible = true;
                 life2.Visible = true;
                 life3.Visible = false;
+                player_die.Play();
             }
             else if (life == 1)
             {
@@ -179,6 +178,7 @@ namespace Proyek_PV___Space_Impact
                 life1.Visible = true;
                 life2.Visible = false;
                 life3.Visible = false;
+                player_die.Play();
             }
             else
             {
@@ -217,8 +217,8 @@ namespace Proyek_PV___Space_Impact
 
             ///////////////////waktu level setting
             waktuLevel.Add(20);
-            waktuLevel.Add(10);
-            waktuLevel.Add(10);
+            waktuLevel.Add(25);
+            waktuLevel.Add(30);
 
             ///////////////////initital
             level = 1;
@@ -328,6 +328,10 @@ namespace Proyek_PV___Space_Impact
                         else if (jenisMusuh[i] == 2)
                         {
                             score += 15;
+                        }
+                        else if (jenisMusuh[i] == 3)
+                        {
+                            score += 25;
                         }
                         yMusuh[i] = rand.Next(50, 440);
                         xMusuh[i] = rand.Next(700, 900);
