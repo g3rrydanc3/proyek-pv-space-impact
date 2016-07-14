@@ -58,7 +58,7 @@ namespace Proyek_PV___Space_Impact
 
         private void playerDie()
         {
-            //life--;
+            life--;
             refreshLife();
             x = 30;
             y = this.Height / 2 - 50;
@@ -314,7 +314,7 @@ namespace Proyek_PV___Space_Impact
                 }
                 else
                 {
-                    xMusuh[i] -= 20;
+                    xMusuh[i] -= 10;
                 }
                 
                 ///////////////////loop bullet
@@ -377,11 +377,11 @@ namespace Proyek_PV___Space_Impact
             ///////////////////gerak wall
             for (int i = 0; i < wallTopHeight.Count(); i++)
             {
-                wallTopX[i] -= 20;
+                wallTopX[i] -= 10;
             }
             for (int i = 0; i < wallBotHeight.Count(); i++)
             {
-                wallBotX[i] -= 20;
+                wallBotX[i] -= 10;
             }
             
             ///////////////////gerak bullet
@@ -389,7 +389,7 @@ namespace Proyek_PV___Space_Impact
             {
                 if (bulletArr[i] == true)
                 {
-                    bulletArrX[i] += 40;
+                    bulletArrX[i] += 20;
                 }
             }
 
