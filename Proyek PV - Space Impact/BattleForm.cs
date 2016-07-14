@@ -163,8 +163,8 @@ namespace Proyek_PV___Space_Impact
             {
                 jenisMusuh.Add(3);
                 xMusuh.Add(rand.Next(600, 1200));
-                yMusuh.Add(rand.Next(50, 425));
-                nyawaMusuh.Add(3);
+                yMusuh.Add(rand.Next(50, 341));
+                nyawaMusuh.Add(10);
             }
         }
 
@@ -227,8 +227,8 @@ namespace Proyek_PV___Space_Impact
             imgGround = Image.FromFile(Application.StartupPath + "/asset/battle/groundSprite.png");
 
             ///////////////////waktu level setting
-            waktuLevel.Add(20);
-            waktuLevel.Add(25);
+            waktuLevel.Add(2);
+            waktuLevel.Add(2);
             waktuLevel.Add(30);
 
             ///////////////////initital
@@ -325,7 +325,24 @@ namespace Proyek_PV___Space_Impact
                 for (int j = 0; j < bulletArrX.Count(); j++)
                 {
                     ///////////////////check musuh ketembak
-                    if (bulletArrX[j] >= xMusuh[i] && bulletArrX[j] < xMusuh[i] + 40 && bulletArrY[j] >= yMusuh[i] && bulletArrY[j] < yMusuh[i] + 40)
+                    if (level == 3)
+                    {
+                        if (bulletArrX[j] >= xMusuh[i] && bulletArrX[j] < xMusuh[i] + 200 && bulletArrY[j] >= yMusuh[i] && bulletArrY[j] < yMusuh[i] + 246)
+                        {
+                            bulletArrX[j] = -1000;
+                            bulletArrY[j] = -1000;
+                            bulletArr[j] = false;
+                            nyawaMusuh[i]--;
+                            if (nyawaMusuh[i] == 0)
+                            {
+                                score += 1000;
+                                boss_die.Play();
+                                life = 0;
+                                refreshLife();
+                            }
+                        }
+                    }
+                    else if (bulletArrX[j] >= xMusuh[i] && bulletArrX[j] < xMusuh[i] + 40 && bulletArrY[j] >= yMusuh[i] && bulletArrY[j] < yMusuh[i] + 40)
                     {
                         bulletArrX[j] = -1000;
                         bulletArrY[j] = -1000;
@@ -333,38 +350,27 @@ namespace Proyek_PV___Space_Impact
                         nyawaMusuh[i]--;
                         if (nyawaMusuh[i] == 0)
                         {
-                            if (jenisMusuh[i] == 3)
+                            enemy_die.Play();
+                            yMusuh[i] = rand.Next(50, 440);
+                            xMusuh[i] = rand.Next(700, 900);
+                            if (jenisMusuh[i] == 0)
                             {
-                                boss_die.Play();
-                                MessageBox.Show("WIN");
-                                level++;
-                                nextLevel();
-                                
+                                score += 5;
+                                nyawaMusuh[i] = 1;
                             }
-                            else
+                            else if (jenisMusuh[i] == 1)
                             {
-                                enemy_die.Play();
-                                yMusuh[i] = rand.Next(50, 440);
-                                xMusuh[i] = rand.Next(700, 900);
-                                if (jenisMusuh[i] == 0)
-                                {
-                                    score += 5;
-                                    nyawaMusuh[i] = 1;
-                                }
-                                else if (jenisMusuh[i] == 1)
-                                {
-                                    score += 10;
-                                    nyawaMusuh[i] = 1;
-                                }
-                                else if (jenisMusuh[i] == 2)
-                                {
-                                    score += 15;
-                                    nyawaMusuh[i] = 2;
-                                }
-                                else if (jenisMusuh[i] == 3)
-                                {
-                                    score += 25;
-                                }
+                                score += 10;
+                                nyawaMusuh[i] = 1;
+                            }
+                            else if (jenisMusuh[i] == 2)
+                            {
+                                score += 15;
+                                nyawaMusuh[i] = 2;
+                            }
+                            else if (jenisMusuh[i] == 3)
+                            {
+                                score += 25;
                             }
                         }
                         label2.Text = score.ToString();
