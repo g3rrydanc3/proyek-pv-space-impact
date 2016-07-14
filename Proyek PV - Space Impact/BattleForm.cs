@@ -52,6 +52,7 @@ namespace Proyek_PV___Space_Impact
         List<int> xMusuh = new List<int>();
         List<int> yMusuh = new List<int>();
         List<int> jenisMusuh = new List<int>();
+        List<int> nyawaMusuh = new List<int>();
 
         SoundPlayer boss_die = new SoundPlayer(Application.StartupPath + "/sfx/boss_die.wav");
         SoundPlayer enemy_die = new SoundPlayer(Application.StartupPath + "/sfx/enemy_die.wav");
@@ -61,7 +62,7 @@ namespace Proyek_PV___Space_Impact
 
         private void playerDie()
         {
-            life--;
+            //life--;
             refreshLife();
             x = 30;
             y = this.Height / 2 - 50;
@@ -88,6 +89,7 @@ namespace Proyek_PV___Space_Impact
                 bulletArrY.Clear();
                 xMusuh.Clear();
                 yMusuh.Clear();
+                nyawaMusuh.Clear();
                 jenisMusuh.Clear();
                 wallBotHeight.Clear();
                 wallBotX.Clear();
@@ -105,6 +107,7 @@ namespace Proyek_PV___Space_Impact
                 bulletArrY.Clear();
                 xMusuh.Clear();
                 yMusuh.Clear();
+                nyawaMusuh.Clear();
                 jenisMusuh.Clear();
                 wallBotHeight.Clear();
                 wallBotX.Clear();
@@ -136,6 +139,7 @@ namespace Proyek_PV___Space_Impact
                     jenisMusuh.Add(rand.Next(0, 2));
                     xMusuh.Add(rand.Next(600, 1200));
                     yMusuh.Add(rand.Next(50, 425));
+                    nyawaMusuh.Add(1);
                 }
             }
             else if (level == 2)
@@ -145,6 +149,14 @@ namespace Proyek_PV___Space_Impact
                     jenisMusuh.Add(rand.Next(0, 3));
                     xMusuh.Add(rand.Next(600, 1200));
                     yMusuh.Add(rand.Next(50, 425));
+                    if (jenisMusuh[i] == 2)
+                    {
+                        nyawaMusuh.Add(2);
+                    }
+                    else
+                    {
+                        nyawaMusuh.Add(1);
+                    }
                 }
             }
             else if (level == 3)
@@ -152,6 +164,7 @@ namespace Proyek_PV___Space_Impact
                 jenisMusuh.Add(3);
                 xMusuh.Add(rand.Next(600, 1200));
                 yMusuh.Add(rand.Next(50, 425));
+                nyawaMusuh.Add(3);
             }
         }
 
@@ -314,28 +327,46 @@ namespace Proyek_PV___Space_Impact
                     ///////////////////check musuh ketembak
                     if (bulletArrX[j] >= xMusuh[i] && bulletArrX[j] < xMusuh[i] + 40 && bulletArrY[j] >= yMusuh[i] && bulletArrY[j] < yMusuh[i] + 40)
                     {
-                        enemy_die.Play();
-                        if (jenisMusuh[i] == 0)
-                        {
-                            score += 5;
-                        }
-                        else if (jenisMusuh[i] == 1)
-                        {
-                            score += 10;
-                        }
-                        else if (jenisMusuh[i] == 2)
-                        {
-                            score += 15;
-                        }
-                        else if (jenisMusuh[i] == 3)
-                        {
-                            score += 25;
-                        }
-                        yMusuh[i] = rand.Next(50, 440);
-                        xMusuh[i] = rand.Next(700, 900);
                         bulletArrX[j] = -1000;
                         bulletArrY[j] = -1000;
                         bulletArr[j] = false;
+                        nyawaMusuh[i]--;
+                        if (nyawaMusuh[i] == 0)
+                        {
+                            if (jenisMusuh[i] == 3)
+                            {
+                                boss_die.Play();
+                                MessageBox.Show("WIN");
+                                level++;
+                                nextLevel();
+                                
+                            }
+                            else
+                            {
+                                enemy_die.Play();
+                                yMusuh[i] = rand.Next(50, 440);
+                                xMusuh[i] = rand.Next(700, 900);
+                                if (jenisMusuh[i] == 0)
+                                {
+                                    score += 5;
+                                    nyawaMusuh[i] = 1;
+                                }
+                                else if (jenisMusuh[i] == 1)
+                                {
+                                    score += 10;
+                                    nyawaMusuh[i] = 1;
+                                }
+                                else if (jenisMusuh[i] == 2)
+                                {
+                                    score += 15;
+                                    nyawaMusuh[i] = 2;
+                                }
+                                else if (jenisMusuh[i] == 3)
+                                {
+                                    score += 25;
+                                }
+                            }
+                        }
                         label2.Text = score.ToString();
                     }
                 }
@@ -480,6 +511,7 @@ namespace Proyek_PV___Space_Impact
             wallBotHeight.Clear();
             xMusuh.Clear();
             yMusuh.Clear();
+            nyawaMusuh.Clear();
             jenisMusuh.Clear();
             boss_die.Dispose();
             enemy_die.Dispose();
