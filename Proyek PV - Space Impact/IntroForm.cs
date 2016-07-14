@@ -48,6 +48,8 @@ namespace Proyek_PV___Space_Impact
                 else
                 {
                     this.Controls.Remove(pictureBox1);
+                    this.Controls.Remove(pictureBox2);
+                    this.BackgroundImage = Image.FromFile(Application.StartupPath + "/asset/intro/splash2.png");
                 }
             }
             else if(timer > 4)
@@ -67,12 +69,6 @@ namespace Proyek_PV___Space_Impact
                 MenuForm f = new MenuForm();
                 f.ShowDialog();
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            BattleForm f = new BattleForm(0);
-            f.ShowDialog();
         }
 
         private void PencetMouse(object sender, MouseEventArgs e)

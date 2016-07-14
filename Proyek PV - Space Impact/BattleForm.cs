@@ -83,14 +83,6 @@ namespace Proyek_PV___Space_Impact
                 bulletArr.Clear();
                 bulletArrX.Clear();
                 bulletArrY.Clear();
-                xMusuh.Clear();
-                yMusuh.Clear();
-                nyawaMusuh.Clear();
-                jenisMusuh.Clear();
-                wallBotHeight.Clear();
-                wallBotX.Clear();
-                wallTopHeight.Clear();
-                wallTopX.Clear();
                 newRandom();
             }
             else if (level == 3)
@@ -101,21 +93,20 @@ namespace Proyek_PV___Space_Impact
                 bulletArr.Clear();
                 bulletArrX.Clear();
                 bulletArrY.Clear();
-                xMusuh.Clear();
-                yMusuh.Clear();
-                nyawaMusuh.Clear();
-                jenisMusuh.Clear();
-                wallBotHeight.Clear();
-                wallBotX.Clear();
-                wallTopHeight.Clear();
-                wallTopX.Clear();
                 newRandom();
             }
-
         }
 
         private void newRandom()
         {
+            xMusuh.Clear();
+            yMusuh.Clear();
+            nyawaMusuh.Clear();
+            jenisMusuh.Clear();
+            wallBotHeight.Clear();
+            wallBotX.Clear();
+            wallTopHeight.Clear();
+            wallTopX.Clear();
             ///////////////////random wall
             if (level != 3)
             {
@@ -333,8 +324,7 @@ namespace Proyek_PV___Space_Impact
                             {
                                 score += 100;
                                 boss_die.Play();
-                                life = 0;
-                                refreshLife();
+                                newRandom();
                             }
                         }
                     }
@@ -369,8 +359,8 @@ namespace Proyek_PV___Space_Impact
                                 score += 25;
                             }
                         }
-                        label2.Text = score.ToString();
                     }
+                    label2.Text = score.ToString();
                 }
             }
 

@@ -123,10 +123,21 @@ namespace Proyek_PV___Space_Impact
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            SetVisibleCore(false);
+            HowToPlayForm f = new HowToPlayForm();
+            f.ShowDialog();
+            SetVisibleCore(true);
         }
 
         private void button4_Click(object sender, EventArgs e)
+        {
+            SetVisibleCore(false);
+            AboutForm f = new AboutForm();
+            f.ShowDialog();
+            SetVisibleCore(true);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
         {
             CloseWaveOut();
             System.Environment.Exit(1);
